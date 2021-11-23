@@ -1,4 +1,12 @@
-﻿Public Class SystemInfoModule
+﻿'Esta clase se encarga de obtener la informacion necesaria del equipo
+' haciendo uso de objetos establecidos del entorno vb.net, su razon de ser es 
+' solo obtener la informacion necesaria de cada peticion. 
+
+Public Class SystemInfoModule
+
+    'My.Computer.Registry.getValue(dir, nombre_archivo, nothing or '')
+    'tcp/ ip protocol para sockets
+    'TCPListener, TCPClient
 
     'Funcion para regresar el nombre completo del SO
     'No recibe parametros y el valor de retorno es una cadena
@@ -32,16 +40,111 @@
         getComputerName = compName
     End Function
 
-    'Funcion para regresar la version informacion del cpu
+    'Funcion para regresar la informacion del cpu
     'No recibe parametros y el valor de retorno es una cadena
-
+    Public Function getCpuInfo() As String
+        Dim cpuInfo As String
+        Dim regAddres As String
+        regAddres = "Equipo\HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\1"
+        cpuInfo = My.Computer.Registry.GetValue(regAddres, "ProcessorNameString", Nothing)
+        getCpuInfo = cpuInfo
+    End Function
 
     'Funcion para regresar la cantidad de memoria RAM expresada en GB
     'No recibe parametros y el valor de retorno es un entero
     Public Function getRam() As Integer
         Dim totalRam As Integer
         totalRam = My.Computer.Info.TotalPhysicalMemory
-        getRam = totalRam
+        getRam = toGigaBytes(totalRam)
     End Function
 
+    'Funcion para regresar la informacion de las unidades de disco
+    'Incluyendo la letra de unidad, el total, el espacio utilizado, el espacio
+    'libre y el formato del sistema de archivos de la unidad, no recibe parametros 
+    ' su tipo de retorno es una cadena
+    Public Function getDrivesInformation() As String
+        Dim drivesInfo As String = ""
+        Dim diskInfoManager() As System.IO.DriveInfo
+        Try
+            diskInfoManager = System.IO.DriveInfo.GetDrives
+        Catch ex As Exception
+        End Try
+        For Each drive As System.IO.DriveInfo In diskInfoManager
+            If drive.IsReady Then
+                drivesInfo += "Letra de unidad: " & drive.Name + ":\"
+                drivesInfo += "Espacio total en disco: " & toGigaBytes(drive.TotalSize)
+                drivesInfo += "Espacio utilizado en disco: " & toGigaBytes((drive.TotalSize - drive.TotalFreeSpace))
+                drivesInfo += "Espacio libre en disco: " & toGigaBytes(drive.TotalFreeSpace)
+                drivesInfo += "Sistema de archivos: " & drive.DriveFormat
+            End If
+        Next
+        getDrivesInformation = drivesInfo
+    End Function
+
+    'Funcion para regresar la resolucion de pantalla del equipo, no recibe parametros
+    'su tipo de retorno es una cadena
+    Public Function getScreenResolution() As String
+        Dim screenRes As String
+        Dim screenWidth As Integer = Screen.PrimaryScreen.Bounds.Width
+        Dim screenHeight As Integer = Screen.PrimaryScreen.Bounds.Height
+        screenRes = screenWidth + " x " + screenHeight
+        getScreenResolution = screenRes
+    End Function
+
+    'Funcion para regresar la cadena que contiene el nombre de usuario que inicio sesion 
+    'no recibe parametros
+    Public Function getUserName() As String
+        Dim userName As String
+        userName = My.User.Name
+        getUserName = userName
+    End Function
+
+    'Funcion para regresar la zona horaria del sistema en formato cadena, no recibe
+    'parametros
+    Public Function getTimeZone() As String
+        Dim timeZone As TimeZoneInfo
+        timeZone = System.TimeZoneInfo.Local
+        getTimeZone = timeZone.DisplayName
+    End Function
+
+    'Funcion para regresar la fecha y la hora del equipo en el momento de consulta
+    'no se reciben parametros y el valor de retorno es una cadena
+    Public Function getDateTime() As String
+        Dim dateTime As Date
+        dateTime = My.Computer.Clock.LocalTime
+        getDateTime = dateTime.ToString
+    End Function
+
+    'Funcion para regresar una lista entera de los procesos en ejecucion en el equipo
+    'no recibe parametros y el valor de retorno es una cadena de texto
+    Public Function getProcessList() As String
+        Dim processList() As Process
+        Dim processInfoList As String = ""
+        Try
+            processList = Process.GetProcesses
+            For Each process As Process In processList
+                processInfoList += "PID:   " & process.Id & "   Nombre del proceso:   " & process.ProcessName
+            Next
+        Catch ex As Exception
+        End Try
+        getProcessList = processInfoList
+    End Function
+
+    'Funcion para convertir una determinada cantidad a gigabtyes dada una cantidad en bytes
+    'Recibe la cantidad de bytes como un lon y devuelve se equivalente en gigas
+    Public Function toGigaBytes(bytes As Long)
+        Dim divStep As Byte = 4
+        Dim divAmount As Integer = 1024
+        For j = 0 To divStep
+            bytes /= divAmount
+        Next
+        toGigaBytes = bytes
+    End Function
+
+
+
+
+
+
 End Class
+

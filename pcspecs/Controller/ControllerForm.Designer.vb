@@ -22,18 +22,18 @@ Partial Class ControllerForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
-        Me.Button10 = New System.Windows.Forms.Button()
-        Me.Button11 = New System.Windows.Forms.Button()
-        Me.Button12 = New System.Windows.Forms.Button()
+        Me.btn_osName = New System.Windows.Forms.Button()
+        Me.btn_osPlatform = New System.Windows.Forms.Button()
+        Me.btn_osVersion = New System.Windows.Forms.Button()
+        Me.btn_pcName = New System.Windows.Forms.Button()
+        Me.btn_cpuInfo = New System.Windows.Forms.Button()
+        Me.btn_totalRam = New System.Windows.Forms.Button()
+        Me.btn_drives = New System.Windows.Forms.Button()
+        Me.btn_screenRes = New System.Windows.Forms.Button()
+        Me.btn_user = New System.Windows.Forms.Button()
+        Me.btn_timeZone = New System.Windows.Forms.Button()
+        Me.btn_dateTime = New System.Windows.Forms.Button()
+        Me.btn_Process = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -50,113 +50,113 @@ Partial Class ControllerForm
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Button1
+        'btn_osName
         '
-        Me.Button1.Location = New System.Drawing.Point(38, 126)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(230, 79)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Nombre Completo SO"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btn_osName.Location = New System.Drawing.Point(38, 126)
+        Me.btn_osName.Name = "btn_osName"
+        Me.btn_osName.Size = New System.Drawing.Size(230, 79)
+        Me.btn_osName.TabIndex = 0
+        Me.btn_osName.Text = "Nombre Completo SO"
+        Me.btn_osName.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btn_osPlatform
         '
-        Me.Button2.Location = New System.Drawing.Point(38, 236)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(230, 77)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Plataforma del SO"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btn_osPlatform.Location = New System.Drawing.Point(38, 236)
+        Me.btn_osPlatform.Name = "btn_osPlatform"
+        Me.btn_osPlatform.Size = New System.Drawing.Size(230, 77)
+        Me.btn_osPlatform.TabIndex = 1
+        Me.btn_osPlatform.Text = "Plataforma del SO"
+        Me.btn_osPlatform.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btn_osVersion
         '
-        Me.Button3.Location = New System.Drawing.Point(38, 345)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(230, 79)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Version SO"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btn_osVersion.Location = New System.Drawing.Point(38, 345)
+        Me.btn_osVersion.Name = "btn_osVersion"
+        Me.btn_osVersion.Size = New System.Drawing.Size(230, 79)
+        Me.btn_osVersion.TabIndex = 2
+        Me.btn_osVersion.Text = "Version SO"
+        Me.btn_osVersion.UseVisualStyleBackColor = True
         '
-        'Button4
+        'btn_pcName
         '
-        Me.Button4.Location = New System.Drawing.Point(512, 126)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(219, 57)
-        Me.Button4.TabIndex = 3
-        Me.Button4.Text = "Nombre del equipo"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btn_pcName.Location = New System.Drawing.Point(512, 126)
+        Me.btn_pcName.Name = "btn_pcName"
+        Me.btn_pcName.Size = New System.Drawing.Size(219, 57)
+        Me.btn_pcName.TabIndex = 3
+        Me.btn_pcName.Text = "Nombre del equipo"
+        Me.btn_pcName.UseVisualStyleBackColor = True
         '
-        'Button5
+        'btn_cpuInfo
         '
-        Me.Button5.Location = New System.Drawing.Point(512, 212)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(219, 55)
-        Me.Button5.TabIndex = 4
-        Me.Button5.Text = "Informacion del CPU"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btn_cpuInfo.Location = New System.Drawing.Point(512, 212)
+        Me.btn_cpuInfo.Name = "btn_cpuInfo"
+        Me.btn_cpuInfo.Size = New System.Drawing.Size(219, 55)
+        Me.btn_cpuInfo.TabIndex = 4
+        Me.btn_cpuInfo.Text = "Informacion del CPU"
+        Me.btn_cpuInfo.UseVisualStyleBackColor = True
         '
-        'Button6
+        'btn_totalRam
         '
-        Me.Button6.Location = New System.Drawing.Point(512, 289)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(219, 57)
-        Me.Button6.TabIndex = 5
-        Me.Button6.Text = "Total RAM(GB)"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.btn_totalRam.Location = New System.Drawing.Point(512, 289)
+        Me.btn_totalRam.Name = "btn_totalRam"
+        Me.btn_totalRam.Size = New System.Drawing.Size(219, 57)
+        Me.btn_totalRam.TabIndex = 5
+        Me.btn_totalRam.Text = "Total RAM(GB)"
+        Me.btn_totalRam.UseVisualStyleBackColor = True
         '
-        'Button7
+        'btn_drives
         '
-        Me.Button7.Location = New System.Drawing.Point(512, 367)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(219, 57)
-        Me.Button7.TabIndex = 6
-        Me.Button7.Text = "Lista Unidades de Disco"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.btn_drives.Location = New System.Drawing.Point(512, 367)
+        Me.btn_drives.Name = "btn_drives"
+        Me.btn_drives.Size = New System.Drawing.Size(219, 57)
+        Me.btn_drives.TabIndex = 6
+        Me.btn_drives.Text = "Lista Unidades de Disco"
+        Me.btn_drives.UseVisualStyleBackColor = True
         '
-        'Button8
+        'btn_screenRes
         '
-        Me.Button8.Location = New System.Drawing.Point(977, 126)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(208, 48)
-        Me.Button8.TabIndex = 7
-        Me.Button8.Text = "Resolucion de pantalla"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.btn_screenRes.Location = New System.Drawing.Point(977, 126)
+        Me.btn_screenRes.Name = "btn_screenRes"
+        Me.btn_screenRes.Size = New System.Drawing.Size(208, 48)
+        Me.btn_screenRes.TabIndex = 7
+        Me.btn_screenRes.Text = "Resolucion de pantalla"
+        Me.btn_screenRes.UseVisualStyleBackColor = True
         '
-        'Button9
+        'btn_user
         '
-        Me.Button9.Location = New System.Drawing.Point(977, 192)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(208, 46)
-        Me.Button9.TabIndex = 8
-        Me.Button9.Text = "Nombre de usuario"
-        Me.Button9.UseVisualStyleBackColor = True
+        Me.btn_user.Location = New System.Drawing.Point(977, 192)
+        Me.btn_user.Name = "btn_user"
+        Me.btn_user.Size = New System.Drawing.Size(208, 46)
+        Me.btn_user.TabIndex = 8
+        Me.btn_user.Text = "Nombre de usuario"
+        Me.btn_user.UseVisualStyleBackColor = True
         '
-        'Button10
+        'btn_timeZone
         '
-        Me.Button10.Location = New System.Drawing.Point(977, 255)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(208, 48)
-        Me.Button10.TabIndex = 9
-        Me.Button10.Text = "Zona horaria "
-        Me.Button10.UseVisualStyleBackColor = True
+        Me.btn_timeZone.Location = New System.Drawing.Point(977, 255)
+        Me.btn_timeZone.Name = "btn_timeZone"
+        Me.btn_timeZone.Size = New System.Drawing.Size(208, 48)
+        Me.btn_timeZone.TabIndex = 9
+        Me.btn_timeZone.Text = "Zona horaria "
+        Me.btn_timeZone.UseVisualStyleBackColor = True
         '
-        'Button11
+        'btn_dateTime
         '
-        Me.Button11.Location = New System.Drawing.Point(977, 324)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(208, 48)
-        Me.Button11.TabIndex = 10
-        Me.Button11.Text = "Fecha y hora del equipo"
-        Me.Button11.UseVisualStyleBackColor = True
+        Me.btn_dateTime.Location = New System.Drawing.Point(977, 324)
+        Me.btn_dateTime.Name = "btn_dateTime"
+        Me.btn_dateTime.Size = New System.Drawing.Size(208, 48)
+        Me.btn_dateTime.TabIndex = 10
+        Me.btn_dateTime.Text = "Fecha y hora del equipo"
+        Me.btn_dateTime.UseVisualStyleBackColor = True
         '
-        'Button12
+        'btn_Process
         '
-        Me.Button12.Location = New System.Drawing.Point(977, 391)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(208, 48)
-        Me.Button12.TabIndex = 11
-        Me.Button12.Text = "Lista de procesos en ejecucion"
-        Me.Button12.UseVisualStyleBackColor = True
+        Me.btn_Process.Location = New System.Drawing.Point(977, 391)
+        Me.btn_Process.Name = "btn_Process"
+        Me.btn_Process.Size = New System.Drawing.Size(208, 48)
+        Me.btn_Process.TabIndex = 11
+        Me.btn_Process.Text = "Lista de procesos en ejecucion"
+        Me.btn_Process.UseVisualStyleBackColor = True
         '
         'Panel1
         '
@@ -288,18 +288,18 @@ Partial Class ControllerForm
         Me.Controls.Add(Me.Button13)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Button12)
-        Me.Controls.Add(Me.Button11)
-        Me.Controls.Add(Me.Button10)
-        Me.Controls.Add(Me.Button9)
-        Me.Controls.Add(Me.Button8)
-        Me.Controls.Add(Me.Button7)
-        Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btn_Process)
+        Me.Controls.Add(Me.btn_dateTime)
+        Me.Controls.Add(Me.btn_timeZone)
+        Me.Controls.Add(Me.btn_user)
+        Me.Controls.Add(Me.btn_screenRes)
+        Me.Controls.Add(Me.btn_drives)
+        Me.Controls.Add(Me.btn_totalRam)
+        Me.Controls.Add(Me.btn_cpuInfo)
+        Me.Controls.Add(Me.btn_pcName)
+        Me.Controls.Add(Me.btn_osVersion)
+        Me.Controls.Add(Me.btn_osPlatform)
+        Me.Controls.Add(Me.btn_osName)
         Me.Name = "ControllerForm"
         Me.Text = "Controller App"
         Me.Panel1.ResumeLayout(False)
@@ -308,18 +308,18 @@ Partial Class ControllerForm
 
     End Sub
 
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Button8 As Button
-    Friend WithEvents Button9 As Button
-    Friend WithEvents Button10 As Button
-    Friend WithEvents Button11 As Button
-    Friend WithEvents Button12 As Button
+    Friend WithEvents btn_osName As Button
+    Friend WithEvents btn_osPlatform As Button
+    Friend WithEvents btn_osVersion As Button
+    Friend WithEvents btn_pcName As Button
+    Friend WithEvents btn_cpuInfo As Button
+    Friend WithEvents btn_totalRam As Button
+    Friend WithEvents btn_drives As Button
+    Friend WithEvents btn_screenRes As Button
+    Friend WithEvents btn_user As Button
+    Friend WithEvents btn_timeZone As Button
+    Friend WithEvents btn_dateTime As Button
+    Friend WithEvents btn_Process As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel2 As Panel

@@ -3,6 +3,7 @@ Imports System.Net
 Imports System.IO
 Imports System.Threading
 Public Class RemoteSocket
+
     'Server socket variables
     Private ipAddress As IPAddress
     Private PORT As Integer = 12345
@@ -36,7 +37,6 @@ Public Class RemoteSocket
         StartListen()
         'We create the thread whose function is to attend the request
         requestResponser = New Threading.Thread(AddressOf ResponseRequest)
-
     End Sub
 
     Public Function ShowClientIP() As String
@@ -81,7 +81,6 @@ Public Class RemoteSocket
                 AcceptClient()
                 AcceptRequest()
             End If
-
             Thread.Sleep(150)
         End While
     End Sub
