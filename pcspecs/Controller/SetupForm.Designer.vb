@@ -58,6 +58,7 @@ Partial Class SetupForm
         Me.txt_ip4.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txt_ip4.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.txt_ip4.Location = New System.Drawing.Point(564, 49)
+        Me.txt_ip4.MaxLength = 3
         Me.txt_ip4.Multiline = True
         Me.txt_ip4.Name = "txt_ip4"
         Me.txt_ip4.Size = New System.Drawing.Size(98, 45)
@@ -70,6 +71,7 @@ Partial Class SetupForm
         Me.txt_ip3.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txt_ip3.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.txt_ip3.Location = New System.Drawing.Point(388, 49)
+        Me.txt_ip3.MaxLength = 3
         Me.txt_ip3.Multiline = True
         Me.txt_ip3.Name = "txt_ip3"
         Me.txt_ip3.Size = New System.Drawing.Size(98, 45)
@@ -82,6 +84,7 @@ Partial Class SetupForm
         Me.txt_ip2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txt_ip2.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.txt_ip2.Location = New System.Drawing.Point(192, 49)
+        Me.txt_ip2.MaxLength = 3
         Me.txt_ip2.Multiline = True
         Me.txt_ip2.Name = "txt_ip2"
         Me.txt_ip2.Size = New System.Drawing.Size(98, 45)
@@ -127,6 +130,7 @@ Partial Class SetupForm
         Me.txt_ip1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txt_ip1.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.txt_ip1.Location = New System.Drawing.Point(20, 49)
+        Me.txt_ip1.MaxLength = 3
         Me.txt_ip1.Multiline = True
         Me.txt_ip1.Name = "txt_ip1"
         Me.txt_ip1.Size = New System.Drawing.Size(98, 45)
