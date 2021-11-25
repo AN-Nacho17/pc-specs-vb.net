@@ -5,7 +5,7 @@ Imports System.Net
 Public Class ControllerSocket
 
     Private Client As TcpClient
-    Private Const PORT As Integer = 5000
+    Private Const PORT As Integer = 8888
     Private OutputStream As StreamWriter
     Private InputStream As StreamReader
 

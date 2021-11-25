@@ -5,8 +5,8 @@ Imports System.Threading
 Public Class RemoteSocket
 
     'Server socket variables
-    Private IpAddres As IPAddress
-    Private PORT As Integer = 5000
+    Private IpAddress As IPAddress
+    Private PORT As Integer = 8888
     Private ServerSocket As TcpListener
     Private RequestResponser As Threading.Thread
     Private StopListen As Boolean = False
@@ -35,17 +35,17 @@ Public Class RemoteSocket
 
     'Clients that gonna be connected in server
     Private Client As TcpClient
-    Private ClientData As StreamReader
+    Private ClientData As NetworkStream
 
     Public Sub New()
         GetIPAddress()
-        ServerSocket = New TcpListener(IpAddres, PORT)
+        ServerSocket = New TcpListener(IpAddress, PORT)
         RequestResponser = New Threading.Thread(AddressOf ResponseRequest)
         StartListen()
     End Sub
 
     Public Function ShowClientIP() As String
-        Return IpAddres.ToString
+        Return IpAddress.ToString
     End Function
 
     Public Sub StartListen()
@@ -58,19 +58,18 @@ Public Class RemoteSocket
     End Sub
 
     Public Sub AcceptRequest()
-        ClientData = New StreamReader(Client.GetStream)
+        ClientData = Client.GetStream()
     End Sub
 
     Private Sub CloseConnection()
-
+        Client.Close()
+        ServerSocket.Stop()
     End Sub
 
     Private Sub GetIPAddress()
-        Dim strHostName As String
         Dim strIPAddress As String
-        strHostName = System.Net.Dns.GetHostName()
-        strIPAddress = System.Net.Dns.GetHostByName(strHostName).AddressList(0).ToString()
-        IpAddres = IPAddress.Parse(strIPAddress)
+        strIPAddress = System.Net.Dns.GetHostAddresses(System.Net.Dns.GetHostName()).GetValue(0).ToString()
+        IpAddress = IPAddress.Parse(strIPAddress)
     End Sub
 
     Private Sub ResponseRequest()
