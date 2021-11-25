@@ -93,7 +93,7 @@ Partial Class RemoteForm
         Me.lb_ipAddress.ForeColor = System.Drawing.Color.Black
         Me.lb_ipAddress.Location = New System.Drawing.Point(584, 275)
         Me.lb_ipAddress.Name = "lb_ipAddress"
-        Me.lb_ipAddress.Size = New System.Drawing.Size(274, 50)
+        Me.lb_ipAddress.Size = New System.Drawing.Size(348, 50)
         Me.lb_ipAddress.TabIndex = 4
         Me.lb_ipAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -109,6 +109,8 @@ Partial Class RemoteForm
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Panel1)
         Me.ForeColor = System.Drawing.SystemColors.MenuHighlight
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "RemoteForm"
         Me.Text = "Remote App"
         Me.Panel1.ResumeLayout(False)

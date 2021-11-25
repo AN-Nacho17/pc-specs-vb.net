@@ -141,17 +141,17 @@ Partial Class SetupForm
         'Label1
         '
         Me.Label1.BackColor = System.Drawing.Color.Silver
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(83, 37)
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 19.8!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Location = New System.Drawing.Point(83, 39)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(688, 79)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "INICIO: Digite un direccion IPv4"
+        Me.Label1.Text = "Digite un direccion IPv4"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btn_start
         '
-        Me.btn_start.BackColor = System.Drawing.Color.NavajoWhite
+        Me.btn_start.BackColor = System.Drawing.Color.MediumSeaGreen
         Me.btn_start.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.btn_start.Location = New System.Drawing.Point(594, 410)
         Me.btn_start.Name = "btn_start"
@@ -162,7 +162,7 @@ Partial Class SetupForm
         '
         'btn_localHost
         '
-        Me.btn_localHost.BackColor = System.Drawing.Color.NavajoWhite
+        Me.btn_localHost.BackColor = System.Drawing.Color.SandyBrown
         Me.btn_localHost.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.btn_localHost.Location = New System.Drawing.Point(24, 410)
         Me.btn_localHost.Name = "btn_localHost"
@@ -173,8 +173,9 @@ Partial Class SetupForm
         '
         'btn_test
         '
-        Me.btn_test.BackColor = System.Drawing.Color.NavajoWhite
+        Me.btn_test.BackColor = System.Drawing.Color.Teal
         Me.btn_test.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_test.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_test.Location = New System.Drawing.Point(451, 317)
         Me.btn_test.Name = "btn_test"
         Me.btn_test.Size = New System.Drawing.Size(153, 40)
@@ -184,8 +185,9 @@ Partial Class SetupForm
         '
         'btn_clean
         '
-        Me.btn_clean.BackColor = System.Drawing.Color.NavajoWhite
+        Me.btn_clean.BackColor = System.Drawing.Color.Firebrick
         Me.btn_clean.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_clean.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_clean.Location = New System.Drawing.Point(248, 317)
         Me.btn_clean.Name = "btn_clean"
         Me.btn_clean.Size = New System.Drawing.Size(153, 40)
@@ -205,6 +207,8 @@ Partial Class SetupForm
         Me.Controls.Add(Me.btn_start)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "SetupForm"
         Me.Text = "Setup Window"
         Me.Panel1.ResumeLayout(False)

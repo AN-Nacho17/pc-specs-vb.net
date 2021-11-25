@@ -9,7 +9,7 @@
     'de texto son correctos y en caso de, armar la direccion IP completa
     'Ademas hace llamado a metodos para verificar el estado de la conexion
     'dada la direccion proporcionada
-    Public Sub Connect()
+    Private Sub Connect()
         Dim IpPart1 As String = txt_ip1.Text
         Dim IpPart2 As String = txt_ip2.Text
         Dim IpPart3 As String = txt_ip3.Text
@@ -103,5 +103,24 @@
         txt_ip3.Enabled = Value
         txt_ip4.Enabled = Value
     End Sub
+
+    Private Sub txt_ip1_TextChanged(sender As Object, e As EventArgs) Handles txt_ip1.TextChanged
+        If txt_ip1.Text.Length = txt_ip1.MaxLength Then
+            txt_ip2.Select()
+        End If
+    End Sub
+
+    Private Sub txt_ip2_TextChanged(sender As Object, e As EventArgs) Handles txt_ip2.TextChanged
+        If txt_ip2.Text.Length = txt_ip2.MaxLength Then
+            txt_ip3.Select()
+        End If
+    End Sub
+
+    Private Sub txt_ip3_TextChanged(sender As Object, e As EventArgs) Handles txt_ip3.TextChanged
+        If txt_ip3.Text.Length = txt_ip3.MaxLength Then
+            txt_ip4.Select()
+        End If
+    End Sub
+
 
 End Class
