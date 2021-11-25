@@ -1,7 +1,6 @@
 ﻿'Esta clase se encarga de obtener la informacion necesaria del equipo
 ' haciendo uso de objetos establecidos del entorno vb.net, su razon de ser es 
-' solo obtener la informacion necesaria de cada peticion. 
-
+' solo obtener la informacion necesaria de cada peticion
 Public Class SystemInfoModule
 
     'My.Computer.Registry.getValue(dir, nombre_archivo, nothing or '')
@@ -71,11 +70,11 @@ Public Class SystemInfoModule
         End Try
         For Each drive As System.IO.DriveInfo In diskInfoManager
             If drive.IsReady Then
-                drivesInfo += "Letra de unidad: " & drive.Name + ":\"
-                drivesInfo += "Espacio total en disco: " & toGigaBytes(drive.TotalSize)
-                drivesInfo += "Espacio utilizado en disco: " & toGigaBytes((drive.TotalSize - drive.TotalFreeSpace))
-                drivesInfo += "Espacio libre en disco: " & toGigaBytes(drive.TotalFreeSpace)
-                drivesInfo += "Sistema de archivos: " & drive.DriveFormat
+                drivesInfo += "Letra de unidad: " + drive.Name + ":\"
+                drivesInfo += "Espacio total en disco: " + toGigaBytes(drive.TotalSize)
+                drivesInfo += "Espacio utilizado en disco: " + toGigaBytes((drive.TotalSize - drive.TotalFreeSpace))
+                drivesInfo += "Espacio libre en disco: " + toGigaBytes(drive.TotalFreeSpace)
+                drivesInfo += "Sistema de archivos: " + drive.DriveFormat
             End If
         Next
         getDrivesInformation = drivesInfo

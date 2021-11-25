@@ -6,7 +6,7 @@ Public Class RemoteSocket
 
     'Server socket variables
     Private ipAddress As IPAddress
-    Private PORT As Integer = 12345
+    Private PORT As Integer = 5000
     Private serverSocket As TcpListener
     Private requestResponser As Threading.Thread
     Private stopListen As Boolean = False
@@ -26,6 +26,12 @@ Public Class RemoteSocket
     Private PROCESS_RUNNING_LIST As Byte = 12
     Private TAKE_SCREESHOT As Byte = 13
     Private SEND_MESSAGE As Byte = 14
+    Private Const VOL_UP As Byte = 15
+    Private Const VOL_DOWN As Byte = 16
+    Private Const MUTE_AUDIO As Byte = 17
+    Private Const SHUTDOWN As Byte = 18
+    Private Const RESTART As Byte = 19
+    Private Const CLOSE_SESSION As Byte = 20
 
     'Clients that gonna be connected in server
     Private client As TcpClient
@@ -60,19 +66,14 @@ Public Class RemoteSocket
 
     End Sub
 
-    Dim mem As String
-
     Private Sub GetIPAddress()
-
         Dim strHostName As String
         Dim strIPAddress As String
         strHostName = System.Net.Dns.GetHostName()
         strIPAddress = System.Net.Dns.GetHostByName(strHostName).AddressList(0).ToString()
-
         ipAddress = IPAddress.Parse(strIPAddress)
         'Este mensaje se muestra en el form
         MessageBox.Show("IP Address: " & strIPAddress)
-
     End Sub
 
     Private Sub ResponseRequest()

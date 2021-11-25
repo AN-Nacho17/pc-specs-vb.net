@@ -38,14 +38,15 @@ Partial Class ControllerForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button13 = New System.Windows.Forms.Button()
-        Me.Button14 = New System.Windows.Forms.Button()
-        Me.Button15 = New System.Windows.Forms.Button()
-        Me.Button16 = New System.Windows.Forms.Button()
-        Me.Button17 = New System.Windows.Forms.Button()
-        Me.Button18 = New System.Windows.Forms.Button()
-        Me.Button19 = New System.Windows.Forms.Button()
-        Me.Button20 = New System.Windows.Forms.Button()
+        Me.btn_takeScreenShot = New System.Windows.Forms.Button()
+        Me.btn_sendMessage = New System.Windows.Forms.Button()
+        Me.btn_volumeUp = New System.Windows.Forms.Button()
+        Me.btn_volumeDown = New System.Windows.Forms.Button()
+        Me.btn_mute = New System.Windows.Forms.Button()
+        Me.btn_shutdown = New System.Windows.Forms.Button()
+        Me.btn_restart = New System.Windows.Forms.Button()
+        Me.btn_closeSession = New System.Windows.Forms.Button()
+        Me.btn_back = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -164,7 +165,7 @@ Partial Class ControllerForm
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Location = New System.Drawing.Point(-4, -4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1277, 101)
+        Me.Panel1.Size = New System.Drawing.Size(1317, 101)
         Me.Panel1.TabIndex = 12
         '
         'Label1
@@ -185,7 +186,7 @@ Partial Class ControllerForm
         Me.Panel2.Controls.Add(Me.Label2)
         Me.Panel2.Location = New System.Drawing.Point(-4, 462)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1277, 82)
+        Me.Panel2.Size = New System.Drawing.Size(1317, 82)
         Me.Panel2.TabIndex = 13
         '
         'Label2
@@ -200,92 +201,104 @@ Partial Class ControllerForm
         Me.Label2.Text = "Opciones para controlar equipo remoto"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Button13
+        'btn_takeScreenShot
         '
-        Me.Button13.Location = New System.Drawing.Point(38, 596)
-        Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(208, 74)
-        Me.Button13.TabIndex = 14
-        Me.Button13.Text = "Realizar captura de pantalla"
-        Me.Button13.UseVisualStyleBackColor = True
+        Me.btn_takeScreenShot.Location = New System.Drawing.Point(38, 596)
+        Me.btn_takeScreenShot.Name = "btn_takeScreenShot"
+        Me.btn_takeScreenShot.Size = New System.Drawing.Size(208, 74)
+        Me.btn_takeScreenShot.TabIndex = 14
+        Me.btn_takeScreenShot.Text = "Realizar captura de pantalla"
+        Me.btn_takeScreenShot.UseVisualStyleBackColor = True
         '
-        'Button14
+        'btn_sendMessage
         '
-        Me.Button14.Location = New System.Drawing.Point(38, 695)
-        Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(208, 74)
-        Me.Button14.TabIndex = 15
-        Me.Button14.Text = "Enviar mensaje a equipo remoto"
-        Me.Button14.UseVisualStyleBackColor = True
+        Me.btn_sendMessage.Location = New System.Drawing.Point(38, 695)
+        Me.btn_sendMessage.Name = "btn_sendMessage"
+        Me.btn_sendMessage.Size = New System.Drawing.Size(208, 74)
+        Me.btn_sendMessage.TabIndex = 15
+        Me.btn_sendMessage.Text = "Enviar mensaje a equipo remoto"
+        Me.btn_sendMessage.UseVisualStyleBackColor = True
         '
-        'Button15
+        'btn_volumeUp
         '
-        Me.Button15.Location = New System.Drawing.Point(339, 596)
-        Me.Button15.Name = "Button15"
-        Me.Button15.Size = New System.Drawing.Size(208, 74)
-        Me.Button15.TabIndex = 16
-        Me.Button15.Text = "Subir volumen"
-        Me.Button15.UseVisualStyleBackColor = True
+        Me.btn_volumeUp.Location = New System.Drawing.Point(339, 596)
+        Me.btn_volumeUp.Name = "btn_volumeUp"
+        Me.btn_volumeUp.Size = New System.Drawing.Size(208, 74)
+        Me.btn_volumeUp.TabIndex = 16
+        Me.btn_volumeUp.Text = "Subir volumen"
+        Me.btn_volumeUp.UseVisualStyleBackColor = True
         '
-        'Button16
+        'btn_volumeDown
         '
-        Me.Button16.Location = New System.Drawing.Point(339, 695)
-        Me.Button16.Name = "Button16"
-        Me.Button16.Size = New System.Drawing.Size(208, 74)
-        Me.Button16.TabIndex = 17
-        Me.Button16.Text = "Bajar volumen"
-        Me.Button16.UseVisualStyleBackColor = True
+        Me.btn_volumeDown.Location = New System.Drawing.Point(339, 695)
+        Me.btn_volumeDown.Name = "btn_volumeDown"
+        Me.btn_volumeDown.Size = New System.Drawing.Size(208, 74)
+        Me.btn_volumeDown.TabIndex = 17
+        Me.btn_volumeDown.Text = "Bajar volumen"
+        Me.btn_volumeDown.UseVisualStyleBackColor = True
         '
-        'Button17
+        'btn_mute
         '
-        Me.Button17.Location = New System.Drawing.Point(659, 596)
-        Me.Button17.Name = "Button17"
-        Me.Button17.Size = New System.Drawing.Size(208, 74)
-        Me.Button17.TabIndex = 18
-        Me.Button17.Text = "Silenciar sonido"
-        Me.Button17.UseVisualStyleBackColor = True
+        Me.btn_mute.Location = New System.Drawing.Point(659, 596)
+        Me.btn_mute.Name = "btn_mute"
+        Me.btn_mute.Size = New System.Drawing.Size(208, 74)
+        Me.btn_mute.TabIndex = 18
+        Me.btn_mute.Text = "Silenciar sonido"
+        Me.btn_mute.UseVisualStyleBackColor = True
         '
-        'Button18
+        'btn_shutdown
         '
-        Me.Button18.Location = New System.Drawing.Point(659, 695)
-        Me.Button18.Name = "Button18"
-        Me.Button18.Size = New System.Drawing.Size(208, 74)
-        Me.Button18.TabIndex = 19
-        Me.Button18.Text = "Apagar el equipo"
-        Me.Button18.UseVisualStyleBackColor = True
+        Me.btn_shutdown.Location = New System.Drawing.Point(659, 695)
+        Me.btn_shutdown.Name = "btn_shutdown"
+        Me.btn_shutdown.Size = New System.Drawing.Size(208, 74)
+        Me.btn_shutdown.TabIndex = 19
+        Me.btn_shutdown.Text = "Apagar el equipo"
+        Me.btn_shutdown.UseVisualStyleBackColor = True
         '
-        'Button19
+        'btn_restart
         '
-        Me.Button19.Location = New System.Drawing.Point(977, 596)
-        Me.Button19.Name = "Button19"
-        Me.Button19.Size = New System.Drawing.Size(208, 74)
-        Me.Button19.TabIndex = 20
-        Me.Button19.Text = "Reiniciar equipo"
-        Me.Button19.UseVisualStyleBackColor = True
+        Me.btn_restart.Location = New System.Drawing.Point(977, 596)
+        Me.btn_restart.Name = "btn_restart"
+        Me.btn_restart.Size = New System.Drawing.Size(208, 74)
+        Me.btn_restart.TabIndex = 20
+        Me.btn_restart.Text = "Reiniciar equipo"
+        Me.btn_restart.UseVisualStyleBackColor = True
         '
-        'Button20
+        'btn_closeSession
         '
-        Me.Button20.Location = New System.Drawing.Point(977, 695)
-        Me.Button20.Name = "Button20"
-        Me.Button20.Size = New System.Drawing.Size(208, 74)
-        Me.Button20.TabIndex = 21
-        Me.Button20.Text = "Cerrar sesion de windows"
-        Me.Button20.UseVisualStyleBackColor = True
+        Me.btn_closeSession.Location = New System.Drawing.Point(977, 695)
+        Me.btn_closeSession.Name = "btn_closeSession"
+        Me.btn_closeSession.Size = New System.Drawing.Size(208, 74)
+        Me.btn_closeSession.TabIndex = 21
+        Me.btn_closeSession.Text = "Cerrar sesion de windows"
+        Me.btn_closeSession.UseVisualStyleBackColor = True
+        '
+        'btn_back
+        '
+        Me.btn_back.BackColor = System.Drawing.Color.Plum
+        Me.btn_back.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_back.Location = New System.Drawing.Point(38, 806)
+        Me.btn_back.Name = "btn_back"
+        Me.btn_back.Size = New System.Drawing.Size(142, 56)
+        Me.btn_back.TabIndex = 22
+        Me.btn_back.Text = "Regresar"
+        Me.btn_back.UseVisualStyleBackColor = False
         '
         'ControllerForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkSlateBlue
-        Me.ClientSize = New System.Drawing.Size(1269, 805)
-        Me.Controls.Add(Me.Button20)
-        Me.Controls.Add(Me.Button19)
-        Me.Controls.Add(Me.Button18)
-        Me.Controls.Add(Me.Button17)
-        Me.Controls.Add(Me.Button16)
-        Me.Controls.Add(Me.Button15)
-        Me.Controls.Add(Me.Button14)
-        Me.Controls.Add(Me.Button13)
+        Me.ClientSize = New System.Drawing.Size(1302, 874)
+        Me.Controls.Add(Me.btn_back)
+        Me.Controls.Add(Me.btn_closeSession)
+        Me.Controls.Add(Me.btn_restart)
+        Me.Controls.Add(Me.btn_shutdown)
+        Me.Controls.Add(Me.btn_mute)
+        Me.Controls.Add(Me.btn_volumeDown)
+        Me.Controls.Add(Me.btn_volumeUp)
+        Me.Controls.Add(Me.btn_sendMessage)
+        Me.Controls.Add(Me.btn_takeScreenShot)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btn_Process)
@@ -324,12 +337,13 @@ Partial Class ControllerForm
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label2 As Label
-    Friend WithEvents Button13 As Button
-    Friend WithEvents Button14 As Button
-    Friend WithEvents Button15 As Button
-    Friend WithEvents Button16 As Button
-    Friend WithEvents Button17 As Button
-    Friend WithEvents Button18 As Button
-    Friend WithEvents Button19 As Button
-    Friend WithEvents Button20 As Button
+    Friend WithEvents btn_takeScreenShot As Button
+    Friend WithEvents btn_sendMessage As Button
+    Friend WithEvents btn_volumeUp As Button
+    Friend WithEvents btn_volumeDown As Button
+    Friend WithEvents btn_mute As Button
+    Friend WithEvents btn_shutdown As Button
+    Friend WithEvents btn_restart As Button
+    Friend WithEvents btn_closeSession As Button
+    Friend WithEvents btn_back As Button
 End Class
