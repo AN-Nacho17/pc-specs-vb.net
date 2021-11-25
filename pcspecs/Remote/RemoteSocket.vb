@@ -57,7 +57,7 @@ Public Class RemoteSocket
         Client = ServerSocket.AcceptTcpClient()
     End Sub
 
-    Public Sub AcceptRequest()
+    Public Sub GetStreams()
         ClientData = Client.GetStream()
     End Sub
 
@@ -73,10 +73,10 @@ Public Class RemoteSocket
     End Sub
 
     Private Sub ResponseRequest()
+        AcceptClient()
+        GetStreams()
         While StopListen = False
             If (ServerSocket.Pending = True) Then
-                AcceptRequest()
-
                 'Logica para atender las consultas
             End If
             Thread.Sleep(150)
