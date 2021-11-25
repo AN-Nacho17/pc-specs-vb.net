@@ -37,8 +37,9 @@ Public Class RemoteSocket
     Private Client As TcpClient
     Private ClientData As NetworkStream
 
+    <Obsolete>
     Public Sub New()
-        GetIPAddress()
+        GetIP()
         ServerSocket = New TcpListener(IpAddress, PORT)
         RequestResponser = New Threading.Thread(AddressOf ResponseRequest)
         StartListen()
@@ -66,10 +67,15 @@ Public Class RemoteSocket
         ServerSocket.Stop()
     End Sub
 
-    Private Sub GetIPAddress()
-        Dim strIPAddress As String
-        strIPAddress = System.Net.Dns.GetHostAddresses(System.Net.Dns.GetHostName()).GetValue(0).ToString()
-        IpAddress = IPAddress.Parse(strIPAddress)
+    Private Sub GetIP()
+        Dim Ipv4String As String
+        Dim Ipv4 As IPAddress() = Dns.GetHostAddresses(Dns.GetHostName)
+        For Each address As IPAddress In Ipv4
+            If address.AddressFamily = AddressFamily.InterNetwork Then
+                Ipv4String = address.ToString()
+            End If
+        Next
+        IpAddress = IPAddress.Parse(Ipv4String)
     End Sub
 
     Private Sub ResponseRequest()
