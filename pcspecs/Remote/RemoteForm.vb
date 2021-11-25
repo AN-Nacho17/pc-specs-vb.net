@@ -7,7 +7,6 @@ Public Class RemoteForm
         Me.CenterToScreen()
         Server = New RemoteSocket()
         lb_status.Text = "ESPERANDO POR UNA CONEXIÓN"
-        Server.AcceptClient()
         lb_status.Text = "CONECTADO"
         lb_ipAddress.Text = Server.ShowClientIP()
     End Sub
