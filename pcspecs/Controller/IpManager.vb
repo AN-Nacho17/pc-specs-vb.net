@@ -47,7 +47,6 @@ Public Class IpManager
         Try
             ConnectionSuccessfull = My.Computer.Network.Ping(IpAddres)
         Catch ex As Exception
-            MsgBox("ERROR: Error durante la prueba de conexion")
         End Try
         TestConnection = ConnectionSuccessfull
     End Function

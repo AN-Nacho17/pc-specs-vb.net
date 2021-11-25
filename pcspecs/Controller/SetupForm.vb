@@ -25,9 +25,16 @@
                 btn_localHost.Enabled = False
                 FinalIpAddress = LocalIpAddres
                 btn_test.Text = "Correcto"
+                btn_clean.Enabled = True
+                SetTxtBoxes(False)
             Else
+                btn_test.Enabled = False
+                btn_start.Enabled = False
+                btn_localHost.Enabled = False
+                btn_clean.Enabled = True
                 'Caso de error donde la conexion a la ip dada fallo
-                MsgBox("ERROR: No se pudo establecer una conexion con la IP ingresada")
+                btn_test.Text = "Incorrecto"
+                SetTxtBoxes(False)
             End If
         Else
             'Caso de error donde las partes de la IP esten incorrectas
@@ -47,6 +54,7 @@
         btn_test.Enabled = False
         Me.CenterToScreen()
         btn_test.Text = "Probar"
+        btn_clean.Enabled = False
     End Sub
 
     'Subrutina que se activa cuando el usuario desea comenzar la conexion a traves
@@ -73,6 +81,27 @@
 
     Private Sub txt_ip4_TextChanged(sender As Object, e As EventArgs) Handles txt_ip4.TextChanged
         btn_test.Enabled = True
+    End Sub
+
+    Private Sub btn_clean_Click(sender As Object, e As EventArgs) Handles btn_clean.Click
+        If btn_test.Text = "Correcto" Or btn_test.Text = "Incorrecto" Then
+            txt_ip1.Text = ""
+            txt_ip2.Text = ""
+            txt_ip3.Text = ""
+            txt_ip4.Text = ""
+            btn_start.Enabled = True
+            btn_localHost.Enabled = True
+            btn_test.Enabled = True
+            btn_test.Text = "Probar"
+            SetTxtBoxes(True)
+        End If
+    End Sub
+
+    Private Sub SetTxtBoxes(Value As Boolean)
+        txt_ip1.Enabled = Value
+        txt_ip2.Enabled = Value
+        txt_ip3.Enabled = Value
+        txt_ip4.Enabled = Value
     End Sub
 
 End Class

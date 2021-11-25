@@ -34,6 +34,7 @@ Partial Class SetupForm
         Me.btn_start = New System.Windows.Forms.Button()
         Me.btn_localHost = New System.Windows.Forms.Button()
         Me.btn_test = New System.Windows.Forms.Button()
+        Me.btn_clean = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -174,12 +175,23 @@ Partial Class SetupForm
         '
         Me.btn_test.BackColor = System.Drawing.Color.NavajoWhite
         Me.btn_test.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.btn_test.Location = New System.Drawing.Point(347, 318)
+        Me.btn_test.Location = New System.Drawing.Point(451, 317)
         Me.btn_test.Name = "btn_test"
         Me.btn_test.Size = New System.Drawing.Size(153, 40)
         Me.btn_test.TabIndex = 4
         Me.btn_test.Text = "Probar"
         Me.btn_test.UseVisualStyleBackColor = False
+        '
+        'btn_clean
+        '
+        Me.btn_clean.BackColor = System.Drawing.Color.NavajoWhite
+        Me.btn_clean.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_clean.Location = New System.Drawing.Point(248, 317)
+        Me.btn_clean.Name = "btn_clean"
+        Me.btn_clean.Size = New System.Drawing.Size(153, 40)
+        Me.btn_clean.TabIndex = 5
+        Me.btn_clean.Text = "Limpiar"
+        Me.btn_clean.UseVisualStyleBackColor = False
         '
         'SetupForm
         '
@@ -187,6 +199,7 @@ Partial Class SetupForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.IndianRed
         Me.ClientSize = New System.Drawing.Size(827, 506)
+        Me.Controls.Add(Me.btn_clean)
         Me.Controls.Add(Me.btn_test)
         Me.Controls.Add(Me.btn_localHost)
         Me.Controls.Add(Me.btn_start)
@@ -212,4 +225,5 @@ Partial Class SetupForm
     Friend WithEvents btn_start As Button
     Friend WithEvents btn_localHost As Button
     Friend WithEvents btn_test As Button
+    Friend WithEvents btn_clean As Button
 End Class
