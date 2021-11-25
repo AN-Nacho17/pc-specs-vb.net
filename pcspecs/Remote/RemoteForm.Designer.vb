@@ -66,7 +66,7 @@ Partial Class RemoteForm
         'lb_status
         '
         Me.lb_status.BackColor = System.Drawing.Color.PowderBlue
-        Me.lb_status.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lb_status.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lb_status.ForeColor = System.Drawing.Color.Black
         Me.lb_status.Location = New System.Drawing.Point(676, 150)
         Me.lb_status.Name = "lb_status"
@@ -83,13 +83,13 @@ Partial Class RemoteForm
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(525, 50)
         Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Direccion IP del equipo controlador:"
+        Me.Label3.Text = "Direccion IP del equipo:"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lb_ipAddress
         '
         Me.lb_ipAddress.BackColor = System.Drawing.Color.PowderBlue
-        Me.lb_ipAddress.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lb_ipAddress.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lb_ipAddress.ForeColor = System.Drawing.Color.Black
         Me.lb_ipAddress.Location = New System.Drawing.Point(584, 275)
         Me.lb_ipAddress.Name = "lb_ipAddress"

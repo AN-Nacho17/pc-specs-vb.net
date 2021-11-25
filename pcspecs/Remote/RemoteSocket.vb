@@ -10,6 +10,8 @@ Public Class RemoteSocket
     Private ServerSocket As TcpListener
     Private RequestResponser As Threading.Thread
     Private StopListen As Boolean = False
+    Private RemoteForm As RemoteForm
+    Public Shared ClientConnected As Boolean = False
 
     'Server possible requests to response
     Private SO_COMPLETE_NAME As Byte = 1
@@ -37,9 +39,10 @@ Public Class RemoteSocket
     Private Client As TcpClient
     Private ClientData As NetworkStream
 
-    <Obsolete>
-    Public Sub New()
-        GetIP()
+    Public Sub New(RemoteForm As RemoteForm)
+        Me.RemoteForm = RemoteForm
+        'GetIP()
+        IpAddress = IPAddress.Parse("127.0.0.1")
         ServerSocket = New TcpListener(IpAddress, PORT)
         RequestResponser = New Threading.Thread(AddressOf ResponseRequest)
         StartListen()
@@ -56,6 +59,7 @@ Public Class RemoteSocket
 
     Public Sub AcceptClient()
         Client = ServerSocket.AcceptTcpClient()
+        ClientConnected = True
     End Sub
 
     Public Sub GetStreams()
@@ -65,10 +69,11 @@ Public Class RemoteSocket
     Private Sub CloseConnection()
         Client.Close()
         ServerSocket.Stop()
+        ClientConnected = False
     End Sub
 
     Private Sub GetIP()
-        Dim Ipv4String As String
+        Dim Ipv4String As String = ""
         Dim Ipv4 As IPAddress() = Dns.GetHostAddresses(Dns.GetHostName)
         For Each address As IPAddress In Ipv4
             If address.AddressFamily = AddressFamily.InterNetwork Then

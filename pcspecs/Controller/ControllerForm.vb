@@ -32,6 +32,7 @@ Public Class ControllerForm
     Public Sub New(ControlSock As ControllerSocket, Sform As SetupForm)
         ControllerSocket = ControlSock
         SetupForm = Sform
+        Me.CenterToScreen()
     End Sub
 
     'Sub de accion para solicitar el nombre completo del sistema operativo al equipo remoto
