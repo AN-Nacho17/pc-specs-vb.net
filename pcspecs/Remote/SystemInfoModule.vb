@@ -9,7 +9,7 @@ Public Class SystemInfoModule
 
     'Funcion para regresar el nombre completo del SO
     'No recibe parametros y el valor de retorno es una cadena
-    Public Function getOsFullName() As String
+    Public Shared Function getOsFullName() As String
         Dim osFullName As String
         osFullName = My.Computer.Info.OSFullName
         getOsFullName = osFullName
@@ -17,7 +17,7 @@ Public Class SystemInfoModule
 
     'Funcion para regresar el nombre de la plataforma del SO
     'No recibe parametros y el valor de retorno es una cadena
-    Public Function getOsPlatform() As String
+    Public Shared Function getOsPlatform() As String
         Dim osPlatform As String
         osPlatform = My.Computer.Info.OSPlatform
         getOsPlatform = osPlatform
@@ -25,7 +25,7 @@ Public Class SystemInfoModule
 
     'Funcion para regresar la version del SO
     'No recibe parametros y el valor de retorno es una cadena
-    Public Function getOsVersion() As String
+    Public Shared Function getOsVersion() As String
         Dim osVersion As String
         osVersion = My.Computer.Info.OSVersion
         getOsVersion = osVersion
@@ -33,7 +33,7 @@ Public Class SystemInfoModule
 
     'Funcion para regresar el nombre de computador
     'No recibe parametros y el valor de retorno es una cadena
-    Public Function getComputerName() As String
+    Public Shared Function getComputerName() As String
         Dim compName As String
         compName = My.Computer.Name
         getComputerName = compName
@@ -41,7 +41,7 @@ Public Class SystemInfoModule
 
     'Funcion para regresar la informacion del cpu
     'No recibe parametros y el valor de retorno es una cadena
-    Public Function getCpuInfo() As String
+    Public Shared Function getCpuInfo() As String
         Dim cpuInfo As String
         Dim regAddres As String
         regAddres = "Equipo\HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\1"
@@ -51,7 +51,7 @@ Public Class SystemInfoModule
 
     'Funcion para regresar la cantidad de memoria RAM expresada en GB
     'No recibe parametros y el valor de retorno es un entero
-    Public Function getRam() As Integer
+    Public Shared Function getRam() As Integer
         Dim totalRam As Integer
         totalRam = My.Computer.Info.TotalPhysicalMemory
         getRam = toGigaBytes(totalRam)
@@ -61,7 +61,7 @@ Public Class SystemInfoModule
     'Incluyendo la letra de unidad, el total, el espacio utilizado, el espacio
     'libre y el formato del sistema de archivos de la unidad, no recibe parametros 
     ' su tipo de retorno es una cadena
-    Public Function getDrivesInformation() As String
+    Public Shared Function getDrivesInformation() As String
         Dim drivesInfo As String = ""
         Dim diskInfoManager() As System.IO.DriveInfo
         Try
@@ -82,7 +82,7 @@ Public Class SystemInfoModule
 
     'Funcion para regresar la resolucion de pantalla del equipo, no recibe parametros
     'su tipo de retorno es una cadena
-    Public Function getScreenResolution() As String
+    Public Shared Function getScreenResolution() As String
         Dim screenRes As String
         Dim screenWidth As Integer = Screen.PrimaryScreen.Bounds.Width
         Dim screenHeight As Integer = Screen.PrimaryScreen.Bounds.Height
@@ -92,7 +92,7 @@ Public Class SystemInfoModule
 
     'Funcion para regresar la cadena que contiene el nombre de usuario que inicio sesion 
     'no recibe parametros
-    Public Function getUserName() As String
+    Public Shared Function getUserName() As String
         Dim userName As String
         userName = My.User.Name
         getUserName = userName
@@ -100,7 +100,7 @@ Public Class SystemInfoModule
 
     'Funcion para regresar la zona horaria del sistema en formato cadena, no recibe
     'parametros
-    Public Function getTimeZone() As String
+    Public Shared Function getTimeZone() As String
         Dim timeZone As TimeZoneInfo
         timeZone = System.TimeZoneInfo.Local
         getTimeZone = timeZone.DisplayName
@@ -108,7 +108,7 @@ Public Class SystemInfoModule
 
     'Funcion para regresar la fecha y la hora del equipo en el momento de consulta
     'no se reciben parametros y el valor de retorno es una cadena
-    Public Function getDateTime() As String
+    Public Shared Function getDateTime() As String
         Dim dateTime As Date
         dateTime = My.Computer.Clock.LocalTime
         getDateTime = dateTime.ToString
@@ -116,7 +116,7 @@ Public Class SystemInfoModule
 
     'Funcion para regresar una lista entera de los procesos en ejecucion en el equipo
     'no recibe parametros y el valor de retorno es una cadena de texto
-    Public Function getProcessList() As String
+    Public Shared Function getProcessList() As String
         Dim processList() As Process
         Dim processInfoList As String = ""
         Try
@@ -131,7 +131,7 @@ Public Class SystemInfoModule
 
     'Funcion para convertir una determinada cantidad a gigabtyes dada una cantidad en bytes
     'Recibe la cantidad de bytes como un lon y devuelve se equivalente en gigas
-    Public Function toGigaBytes(bytes As Long)
+    Private Shared Function toGigaBytes(bytes As Long)
         Dim divStep As Byte = 4
         Dim divAmount As Integer = 1024
         For j = 0 To divStep

@@ -65,12 +65,12 @@ Partial Class RemoteForm
         '
         'lb_status
         '
-        Me.lb_status.BackColor = System.Drawing.Color.RoyalBlue
+        Me.lb_status.BackColor = System.Drawing.Color.PowderBlue
         Me.lb_status.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lb_status.ForeColor = System.Drawing.Color.White
+        Me.lb_status.ForeColor = System.Drawing.Color.Black
         Me.lb_status.Location = New System.Drawing.Point(676, 150)
         Me.lb_status.Name = "lb_status"
-        Me.lb_status.Size = New System.Drawing.Size(255, 50)
+        Me.lb_status.Size = New System.Drawing.Size(279, 50)
         Me.lb_status.TabIndex = 2
         Me.lb_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -88,9 +88,9 @@ Partial Class RemoteForm
         '
         'lb_ipAddress
         '
-        Me.lb_ipAddress.BackColor = System.Drawing.Color.RoyalBlue
+        Me.lb_ipAddress.BackColor = System.Drawing.Color.PowderBlue
         Me.lb_ipAddress.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lb_ipAddress.ForeColor = System.Drawing.Color.White
+        Me.lb_ipAddress.ForeColor = System.Drawing.Color.Black
         Me.lb_ipAddress.Location = New System.Drawing.Point(584, 275)
         Me.lb_ipAddress.Name = "lb_ipAddress"
         Me.lb_ipAddress.Size = New System.Drawing.Size(274, 50)

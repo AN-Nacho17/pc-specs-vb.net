@@ -5,11 +5,11 @@ Imports System.Threading
 Public Class RemoteSocket
 
     'Server socket variables
-    Private ipAddress As IPAddress
+    Private IpAddres As IPAddress
     Private PORT As Integer = 5000
-    Private serverSocket As TcpListener
-    Private requestResponser As Threading.Thread
-    Private stopListen As Boolean = False
+    Private ServerSocket As TcpListener
+    Private RequestResponser As Threading.Thread
+    Private StopListen As Boolean = False
 
     'Server possible requests to response
     Private SO_COMPLETE_NAME As Byte = 1
@@ -34,32 +34,31 @@ Public Class RemoteSocket
     Private Const CLOSE_SESSION As Byte = 20
 
     'Clients that gonna be connected in server
-    Private client As TcpClient
-    Private clientData As StreamReader
+    Private Client As TcpClient
+    Private ClientData As StreamReader
 
     Public Sub New()
         GetIPAddress()
-        serverSocket = New TcpListener(ipAddress, PORT)
+        ServerSocket = New TcpListener(IpAddres, PORT)
+        RequestResponser = New Threading.Thread(AddressOf ResponseRequest)
         StartListen()
-        'We create the thread whose function is to attend the request
-        requestResponser = New Threading.Thread(AddressOf ResponseRequest)
     End Sub
 
     Public Function ShowClientIP() As String
-        Return ipAddress.ToString
+        Return IpAddres.ToString
     End Function
 
     Public Sub StartListen()
-        serverSocket.Start()
-        requestResponser.Start()
+        ServerSocket.Start()
+        RequestResponser.Start()
     End Sub
 
     Public Sub AcceptClient()
-        client = serverSocket.AcceptTcpClient()
+        Client = ServerSocket.AcceptTcpClient()
     End Sub
 
     Public Sub AcceptRequest()
-        clientData = New StreamReader(client.GetStream)
+        ClientData = New StreamReader(Client.GetStream)
     End Sub
 
     Private Sub CloseConnection()
@@ -71,16 +70,15 @@ Public Class RemoteSocket
         Dim strIPAddress As String
         strHostName = System.Net.Dns.GetHostName()
         strIPAddress = System.Net.Dns.GetHostByName(strHostName).AddressList(0).ToString()
-        ipAddress = IPAddress.Parse(strIPAddress)
-        'Este mensaje se muestra en el form
-        MessageBox.Show("IP Address: " & strIPAddress)
+        IpAddres = IPAddress.Parse(strIPAddress)
     End Sub
 
     Private Sub ResponseRequest()
-        While stopListen = True
-            If (serverSocket.Pending = True) Then
-                AcceptClient()
+        While StopListen = False
+            If (ServerSocket.Pending = True) Then
                 AcceptRequest()
+
+                'Logica para atender las consultas
             End If
             Thread.Sleep(150)
         End While

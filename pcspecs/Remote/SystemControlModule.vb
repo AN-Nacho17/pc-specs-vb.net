@@ -6,6 +6,16 @@ Public Class SystemControlModule
 
     'Funcion para realizar una captura de pantalla, su valor de retorno es un
     'mapa de bits a decodificar que contiene la imagen.
+    Public Function TakeScreenShot() As Bitmap
+        Dim LocalBmp As Bitmap
+        Using Bmp As New Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height)
+            Using Graph As Graphics = Graphics.FromImage(Bmp)
+                Graph.CopyFromScreen(0, 0, 0, 0, Bmp.Size)
+                LocalBmp = Bmp
+            End Using
+        End Using
+        TakeScreenShot = LocalBmp
+    End Function
 
     'Funcion para subir el volumen del equipo, no necesita parametros y no posee
     'valor de retorno
