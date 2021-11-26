@@ -27,7 +27,9 @@ Partial Class RemoteForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lb_status = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.lb_ipAddress = New System.Windows.Forms.Label()
+        Me.lb_ipServer = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lb_ipController = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -83,27 +85,52 @@ Partial Class RemoteForm
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(525, 50)
         Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Direccion IP del equipo:"
+        Me.Label3.Text = "Direccion IP del equipo servidor:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'lb_ipAddress
+        'lb_ipServer
         '
-        Me.lb_ipAddress.BackColor = System.Drawing.Color.PowderBlue
-        Me.lb_ipAddress.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lb_ipAddress.ForeColor = System.Drawing.Color.Black
-        Me.lb_ipAddress.Location = New System.Drawing.Point(584, 275)
-        Me.lb_ipAddress.Name = "lb_ipAddress"
-        Me.lb_ipAddress.Size = New System.Drawing.Size(348, 50)
-        Me.lb_ipAddress.TabIndex = 4
-        Me.lb_ipAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lb_ipServer.BackColor = System.Drawing.Color.PowderBlue
+        Me.lb_ipServer.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lb_ipServer.ForeColor = System.Drawing.Color.Black
+        Me.lb_ipServer.Location = New System.Drawing.Point(584, 275)
+        Me.lb_ipServer.Name = "lb_ipServer"
+        Me.lb_ipServer.Size = New System.Drawing.Size(348, 50)
+        Me.lb_ipServer.TabIndex = 4
+        Me.lb_ipServer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.Color.RoyalBlue
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label4.ForeColor = System.Drawing.Color.Orange
+        Me.Label4.Location = New System.Drawing.Point(21, 434)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(525, 50)
+        Me.Label4.TabIndex = 5
+        Me.Label4.Text = "Direccion IP del equipo controlador:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lb_ipController
+        '
+        Me.lb_ipController.BackColor = System.Drawing.Color.PowderBlue
+        Me.lb_ipController.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lb_ipController.ForeColor = System.Drawing.Color.Black
+        Me.lb_ipController.Location = New System.Drawing.Point(584, 434)
+        Me.lb_ipController.Name = "lb_ipController"
+        Me.lb_ipController.Size = New System.Drawing.Size(348, 50)
+        Me.lb_ipController.TabIndex = 6
+        Me.lb_ipController.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'RemoteForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.RoyalBlue
-        Me.ClientSize = New System.Drawing.Size(980, 399)
-        Me.Controls.Add(Me.lb_ipAddress)
+        Me.ClientSize = New System.Drawing.Size(980, 575)
+        Me.Controls.Add(Me.lb_ipController)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.lb_ipServer)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.lb_status)
         Me.Controls.Add(Me.Label2)
@@ -123,5 +150,7 @@ Partial Class RemoteForm
     Friend WithEvents Label2 As Label
     Friend WithEvents lb_status As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents lb_ipAddress As Label
+    Friend WithEvents lb_ipServer As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents lb_ipController As Label
 End Class

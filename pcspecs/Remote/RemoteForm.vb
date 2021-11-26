@@ -5,9 +5,9 @@
     Private Sub RemoteForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CenterToScreen()
         Server = New RemoteSocket()
-        Server.SetRemoteForm(Me)
+        Server.StartServer()
         lb_status.Text = "ESPERANDO"
-        lb_ipAddress.Text = Server.ShowClientIP()
+        lb_ipServer.Text = Server.ShowServerIp()
     End Sub
 
 

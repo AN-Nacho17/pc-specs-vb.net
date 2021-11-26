@@ -101,9 +101,13 @@ Public Class SetupForm
 
     Private Sub ConnectSocket()
         ControllerSocket = New ControllerSocket(LOCALHOST_IPADDRESS)
-        ControllerForm = New ControllerForm()
-        ControllerForm.SetControllerSocket(ControllerSocket)
-        ControllerForm.SetSetupForm(Me)
+        If ControllerSocket.IsConnected Then
+            ControllerForm = New ControllerForm()
+            ControllerForm.SetControllerSocket(ControllerSocket)
+            ControllerForm.SetSetupForm(Me)
+            ControllerSocket.Write(FinalIpAddress)
+        End If
+
     End Sub
 
     'Sub para que cuando el texto de la ultima casilla es cambiado se permita presionar el boton de probar

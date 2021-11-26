@@ -1,17 +1,17 @@
 ﻿Imports System.Net.Sockets
 Imports System.Net
-Imports System.Threading
 Imports System.IO
 
 Public Class RemoteSocket
 
     'Server socket variables
-    Private IpAddress As IPAddress
-    Private PORT As Integer = 8888
+    Private ServerIpAddress As IPAddress
+    Private ClientIpAddress As IPAddress
+    Private PORT As Integer = 5000
     Private Server As TcpListener
-    Private RequestResponser As Threading.Thread
-    Private StopListen As Boolean = False
-    Private RemoteForm As RemoteForm
+    Private ServerRunning As Boolean
+    Private Client As TcpClient
+    Private ConnectionThread As Threading.Thread
 
     'Server possible requests to response
     Private SO_COMPLETE_NAME As Byte = 1
@@ -35,41 +35,21 @@ Public Class RemoteSocket
     Private Const RESTART As Byte = 19
     Private Const CLOSE_SESSION As Byte = 20
 
-    'Clients that gonna be connected in server
-    Private Client As TcpClient
-    Private OutputStream As StreamWriter
-    Private InputStream As StreamReader
 
     Public Sub New()
+        'GetIP() for testing only on local host
+        ServerIpAddress = IPAddress.Parse("127.0.0.1")
+    End Sub
+
+    Public Sub StartServer()
         Try
-            'GetIP() for testing only on local host
-            IpAddress = IPAddress.Parse("127.0.0.1")
-            Server = New TcpListener(IpAddress, PORT)
+            Server = New TcpListener(ServerIpAddress, PORT)
             Server.Start()
-            Client = Server.AcceptTcpClient()
-            OutputStream = New StreamWriter(Client.GetStream)
-            InputStream = New StreamReader(Client.GetStream)
-            RequestResponser = New Thread(AddressOf ResponseRequest)
-            RequestResponser.Start()
-            MsgBox("CONECTADO")
+            ServerRunning = True
+            ConnectionThread = New Threading.Thread(AddressOf ResponseRequest)
+            ConnectionThread.Start()
         Catch ex As Exception
-            MsgBox("ERROR: No se pudo conectar el servidor")
-        End Try
-    End Sub
-
-    Public Sub SetRemoteForm(RemForm As RemoteForm)
-        Me.RemoteForm = RemForm
-    End Sub
-
-    Public Function ShowClientIP() As String
-        Return IpAddress.ToString
-    End Function
-
-    Private Sub CloseConnectionWithClient()
-        Try
-            Client.Close()
-            StopListen = True
-        Catch ex As Exception
+            MsgBox("ERROR: No se pudo iniciar el servidor")
         End Try
     End Sub
 
@@ -81,13 +61,42 @@ Public Class RemoteSocket
                 Ipv4String = address.ToString()
             End If
         Next
-        IpAddress = IPAddress.Parse(Ipv4String)
+        ServerIpAddress = IPAddress.Parse(Ipv4String)
+    End Sub
+
+    Public Function ShowServerIp() As String
+        Return ServerIpAddress.ToString
+    End Function
+
+    Private Sub CloseConnectionWithClient()
+        Try
+            Client.Close()
+            MsgBox("Conexion terminada con el cliente")
+        Catch ex As Exception
+        End Try
     End Sub
 
     Private Sub ResponseRequest()
-        While StopListen = False
-            'Logica para atender las consultas
-        End While
+        Dim InputStream As StreamReader
+        Dim OutputStream As StreamWriter
+        Dim Request As String
+        Dim ParsedRequest As Byte
+        Try
+            If (ServerRunning) Then
+                Client = Server.AcceptTcpClient
+                InputStream = New StreamReader(Client.GetStream)
+                OutputStream = New StreamWriter(Client.GetStream)
+                ClientIpAddress = IPAddress.Parse(InputStream.ReadLine)
+                MsgBox(ClientIpAddress.ToString)
+                While InputStream.BaseStream.CanRead And OutputStream.BaseStream.CanWrite
+                    Request = InputStream.ReadLine
+                    ParsedRequest = Convert.ToByte(Request)
+                    MsgBox("PARSED REQUEST: " + ParsedRequest)
+                End While
+            End If
+        Catch ex As Exception
+            CloseConnectionWithClient()
+        End Try
     End Sub
 
 
