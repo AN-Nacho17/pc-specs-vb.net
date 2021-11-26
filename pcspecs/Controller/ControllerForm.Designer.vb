@@ -53,111 +53,159 @@ Partial Class ControllerForm
         '
         'btn_osName
         '
+        Me.btn_osName.AutoSize = True
+        Me.btn_osName.BackColor = System.Drawing.Color.Salmon
+        Me.btn_osName.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_osName.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_osName.Location = New System.Drawing.Point(38, 126)
         Me.btn_osName.Name = "btn_osName"
         Me.btn_osName.Size = New System.Drawing.Size(230, 79)
         Me.btn_osName.TabIndex = 0
         Me.btn_osName.Text = "Nombre Completo SO"
-        Me.btn_osName.UseVisualStyleBackColor = True
+        Me.btn_osName.UseVisualStyleBackColor = False
         '
         'btn_osPlatform
         '
+        Me.btn_osPlatform.AutoSize = True
+        Me.btn_osPlatform.BackColor = System.Drawing.Color.Salmon
+        Me.btn_osPlatform.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_osPlatform.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_osPlatform.Location = New System.Drawing.Point(38, 236)
         Me.btn_osPlatform.Name = "btn_osPlatform"
         Me.btn_osPlatform.Size = New System.Drawing.Size(230, 77)
         Me.btn_osPlatform.TabIndex = 1
         Me.btn_osPlatform.Text = "Plataforma del SO"
-        Me.btn_osPlatform.UseVisualStyleBackColor = True
+        Me.btn_osPlatform.UseVisualStyleBackColor = False
         '
         'btn_osVersion
         '
+        Me.btn_osVersion.AutoSize = True
+        Me.btn_osVersion.BackColor = System.Drawing.Color.Salmon
+        Me.btn_osVersion.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_osVersion.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_osVersion.Location = New System.Drawing.Point(38, 345)
         Me.btn_osVersion.Name = "btn_osVersion"
         Me.btn_osVersion.Size = New System.Drawing.Size(230, 79)
         Me.btn_osVersion.TabIndex = 2
         Me.btn_osVersion.Text = "Version SO"
-        Me.btn_osVersion.UseVisualStyleBackColor = True
+        Me.btn_osVersion.UseVisualStyleBackColor = False
         '
         'btn_pcName
         '
+        Me.btn_pcName.AutoSize = True
+        Me.btn_pcName.BackColor = System.Drawing.Color.Salmon
+        Me.btn_pcName.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_pcName.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_pcName.Location = New System.Drawing.Point(512, 126)
         Me.btn_pcName.Name = "btn_pcName"
         Me.btn_pcName.Size = New System.Drawing.Size(219, 57)
         Me.btn_pcName.TabIndex = 3
         Me.btn_pcName.Text = "Nombre del equipo"
-        Me.btn_pcName.UseVisualStyleBackColor = True
+        Me.btn_pcName.UseVisualStyleBackColor = False
         '
         'btn_cpuInfo
         '
+        Me.btn_cpuInfo.AutoSize = True
+        Me.btn_cpuInfo.BackColor = System.Drawing.Color.Salmon
+        Me.btn_cpuInfo.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_cpuInfo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_cpuInfo.Location = New System.Drawing.Point(512, 212)
         Me.btn_cpuInfo.Name = "btn_cpuInfo"
         Me.btn_cpuInfo.Size = New System.Drawing.Size(219, 55)
         Me.btn_cpuInfo.TabIndex = 4
         Me.btn_cpuInfo.Text = "Informacion del CPU"
-        Me.btn_cpuInfo.UseVisualStyleBackColor = True
+        Me.btn_cpuInfo.UseVisualStyleBackColor = False
         '
         'btn_totalRam
         '
+        Me.btn_totalRam.AutoSize = True
+        Me.btn_totalRam.BackColor = System.Drawing.Color.Salmon
+        Me.btn_totalRam.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_totalRam.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_totalRam.Location = New System.Drawing.Point(512, 289)
         Me.btn_totalRam.Name = "btn_totalRam"
         Me.btn_totalRam.Size = New System.Drawing.Size(219, 57)
         Me.btn_totalRam.TabIndex = 5
         Me.btn_totalRam.Text = "Total RAM(GB)"
-        Me.btn_totalRam.UseVisualStyleBackColor = True
+        Me.btn_totalRam.UseVisualStyleBackColor = False
         '
         'btn_drives
         '
+        Me.btn_drives.AutoSize = True
+        Me.btn_drives.BackColor = System.Drawing.Color.Salmon
+        Me.btn_drives.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_drives.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_drives.Location = New System.Drawing.Point(512, 367)
         Me.btn_drives.Name = "btn_drives"
         Me.btn_drives.Size = New System.Drawing.Size(219, 57)
         Me.btn_drives.TabIndex = 6
         Me.btn_drives.Text = "Lista Unidades de Disco"
-        Me.btn_drives.UseVisualStyleBackColor = True
+        Me.btn_drives.UseVisualStyleBackColor = False
         '
         'btn_screenRes
         '
+        Me.btn_screenRes.AutoSize = True
+        Me.btn_screenRes.BackColor = System.Drawing.Color.Salmon
+        Me.btn_screenRes.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_screenRes.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_screenRes.Location = New System.Drawing.Point(977, 126)
         Me.btn_screenRes.Name = "btn_screenRes"
         Me.btn_screenRes.Size = New System.Drawing.Size(208, 48)
         Me.btn_screenRes.TabIndex = 7
         Me.btn_screenRes.Text = "Resolucion de pantalla"
-        Me.btn_screenRes.UseVisualStyleBackColor = True
+        Me.btn_screenRes.UseVisualStyleBackColor = False
         '
         'btn_user
         '
+        Me.btn_user.AutoSize = True
+        Me.btn_user.BackColor = System.Drawing.Color.Salmon
+        Me.btn_user.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_user.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_user.Location = New System.Drawing.Point(977, 192)
         Me.btn_user.Name = "btn_user"
         Me.btn_user.Size = New System.Drawing.Size(208, 46)
         Me.btn_user.TabIndex = 8
         Me.btn_user.Text = "Nombre de usuario"
-        Me.btn_user.UseVisualStyleBackColor = True
+        Me.btn_user.UseVisualStyleBackColor = False
         '
         'btn_timeZone
         '
+        Me.btn_timeZone.AutoSize = True
+        Me.btn_timeZone.BackColor = System.Drawing.Color.Salmon
+        Me.btn_timeZone.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_timeZone.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_timeZone.Location = New System.Drawing.Point(977, 255)
         Me.btn_timeZone.Name = "btn_timeZone"
         Me.btn_timeZone.Size = New System.Drawing.Size(208, 48)
         Me.btn_timeZone.TabIndex = 9
         Me.btn_timeZone.Text = "Zona horaria "
-        Me.btn_timeZone.UseVisualStyleBackColor = True
+        Me.btn_timeZone.UseVisualStyleBackColor = False
         '
         'btn_dateTime
         '
+        Me.btn_dateTime.AutoSize = True
+        Me.btn_dateTime.BackColor = System.Drawing.Color.Salmon
+        Me.btn_dateTime.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_dateTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_dateTime.Location = New System.Drawing.Point(977, 324)
         Me.btn_dateTime.Name = "btn_dateTime"
         Me.btn_dateTime.Size = New System.Drawing.Size(208, 48)
         Me.btn_dateTime.TabIndex = 10
         Me.btn_dateTime.Text = "Fecha y hora del equipo"
-        Me.btn_dateTime.UseVisualStyleBackColor = True
+        Me.btn_dateTime.UseVisualStyleBackColor = False
         '
         'btn_Process
         '
+        Me.btn_Process.AutoSize = True
+        Me.btn_Process.BackColor = System.Drawing.Color.Salmon
+        Me.btn_Process.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_Process.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_Process.Location = New System.Drawing.Point(977, 391)
         Me.btn_Process.Name = "btn_Process"
-        Me.btn_Process.Size = New System.Drawing.Size(208, 48)
+        Me.btn_Process.Size = New System.Drawing.Size(251, 48)
         Me.btn_Process.TabIndex = 11
         Me.btn_Process.Text = "Lista de procesos en ejecucion"
-        Me.btn_Process.UseVisualStyleBackColor = True
+        Me.btn_Process.UseVisualStyleBackColor = False
         '
         'Panel1
         '
@@ -203,80 +251,105 @@ Partial Class ControllerForm
         '
         'btn_takeScreenShot
         '
+        Me.btn_takeScreenShot.BackColor = System.Drawing.Color.HotPink
+        Me.btn_takeScreenShot.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_takeScreenShot.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_takeScreenShot.Location = New System.Drawing.Point(38, 596)
         Me.btn_takeScreenShot.Name = "btn_takeScreenShot"
         Me.btn_takeScreenShot.Size = New System.Drawing.Size(208, 74)
         Me.btn_takeScreenShot.TabIndex = 14
         Me.btn_takeScreenShot.Text = "Realizar captura de pantalla"
-        Me.btn_takeScreenShot.UseVisualStyleBackColor = True
+        Me.btn_takeScreenShot.UseVisualStyleBackColor = False
         '
         'btn_sendMessage
         '
+        Me.btn_sendMessage.BackColor = System.Drawing.Color.HotPink
+        Me.btn_sendMessage.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_sendMessage.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_sendMessage.Location = New System.Drawing.Point(38, 695)
         Me.btn_sendMessage.Name = "btn_sendMessage"
         Me.btn_sendMessage.Size = New System.Drawing.Size(208, 74)
         Me.btn_sendMessage.TabIndex = 15
         Me.btn_sendMessage.Text = "Enviar mensaje a equipo remoto"
-        Me.btn_sendMessage.UseVisualStyleBackColor = True
+        Me.btn_sendMessage.UseVisualStyleBackColor = False
         '
         'btn_volumeUp
         '
+        Me.btn_volumeUp.BackColor = System.Drawing.Color.HotPink
+        Me.btn_volumeUp.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_volumeUp.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_volumeUp.Location = New System.Drawing.Point(339, 596)
         Me.btn_volumeUp.Name = "btn_volumeUp"
         Me.btn_volumeUp.Size = New System.Drawing.Size(208, 74)
         Me.btn_volumeUp.TabIndex = 16
         Me.btn_volumeUp.Text = "Subir volumen"
-        Me.btn_volumeUp.UseVisualStyleBackColor = True
+        Me.btn_volumeUp.UseVisualStyleBackColor = False
         '
         'btn_volumeDown
         '
+        Me.btn_volumeDown.BackColor = System.Drawing.Color.HotPink
+        Me.btn_volumeDown.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_volumeDown.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_volumeDown.Location = New System.Drawing.Point(339, 695)
         Me.btn_volumeDown.Name = "btn_volumeDown"
         Me.btn_volumeDown.Size = New System.Drawing.Size(208, 74)
         Me.btn_volumeDown.TabIndex = 17
         Me.btn_volumeDown.Text = "Bajar volumen"
-        Me.btn_volumeDown.UseVisualStyleBackColor = True
+        Me.btn_volumeDown.UseVisualStyleBackColor = False
         '
         'btn_mute
         '
+        Me.btn_mute.BackColor = System.Drawing.Color.HotPink
+        Me.btn_mute.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_mute.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_mute.Location = New System.Drawing.Point(659, 596)
         Me.btn_mute.Name = "btn_mute"
         Me.btn_mute.Size = New System.Drawing.Size(208, 74)
         Me.btn_mute.TabIndex = 18
         Me.btn_mute.Text = "Silenciar sonido"
-        Me.btn_mute.UseVisualStyleBackColor = True
+        Me.btn_mute.UseVisualStyleBackColor = False
         '
         'btn_shutdown
         '
+        Me.btn_shutdown.BackColor = System.Drawing.Color.HotPink
+        Me.btn_shutdown.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_shutdown.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_shutdown.Location = New System.Drawing.Point(659, 695)
         Me.btn_shutdown.Name = "btn_shutdown"
         Me.btn_shutdown.Size = New System.Drawing.Size(208, 74)
         Me.btn_shutdown.TabIndex = 19
         Me.btn_shutdown.Text = "Apagar el equipo"
-        Me.btn_shutdown.UseVisualStyleBackColor = True
+        Me.btn_shutdown.UseVisualStyleBackColor = False
         '
         'btn_restart
         '
+        Me.btn_restart.BackColor = System.Drawing.Color.HotPink
+        Me.btn_restart.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_restart.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_restart.Location = New System.Drawing.Point(977, 596)
         Me.btn_restart.Name = "btn_restart"
         Me.btn_restart.Size = New System.Drawing.Size(208, 74)
         Me.btn_restart.TabIndex = 20
         Me.btn_restart.Text = "Reiniciar equipo"
-        Me.btn_restart.UseVisualStyleBackColor = True
+        Me.btn_restart.UseVisualStyleBackColor = False
         '
         'btn_closeSession
         '
+        Me.btn_closeSession.BackColor = System.Drawing.Color.HotPink
+        Me.btn_closeSession.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_closeSession.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_closeSession.Location = New System.Drawing.Point(977, 695)
         Me.btn_closeSession.Name = "btn_closeSession"
         Me.btn_closeSession.Size = New System.Drawing.Size(208, 74)
         Me.btn_closeSession.TabIndex = 21
         Me.btn_closeSession.Text = "Cerrar sesion de windows"
-        Me.btn_closeSession.UseVisualStyleBackColor = True
+        Me.btn_closeSession.UseVisualStyleBackColor = False
         '
         'btn_back
         '
         Me.btn_back.BackColor = System.Drawing.Color.Plum
         Me.btn_back.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btn_back.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btn_back.Location = New System.Drawing.Point(38, 806)
         Me.btn_back.Name = "btn_back"
         Me.btn_back.Size = New System.Drawing.Size(142, 56)
@@ -318,6 +391,7 @@ Partial Class ControllerForm
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 

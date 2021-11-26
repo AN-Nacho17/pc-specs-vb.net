@@ -143,7 +143,9 @@ Public Class ControllerForm
     End Sub
 
     Private Sub btn_back_Click(sender As Object, e As EventArgs) Handles btn_back.Click
+        ControllerSocket.Write("CERRADA LA CONEXION")
         Me.Hide()
+        SetupForm.setFormToInitialConfig()
         SetupForm.Show()
     End Sub
 

@@ -13,6 +13,7 @@ Public Class ControllerSocket
         Try
             Client = New TcpClient(IpAddress, PORT)
             OutputStream = New StreamWriter(Client.GetStream)
+            InputStream = New StreamReader(Client.GetStream)
             OutputStream.Flush()
         Catch ex As Exception
             MsgBox("ERROR: No se pudo establecer la conexion con el socket")
@@ -23,7 +24,7 @@ Public Class ControllerSocket
         OutputStream.Write(action)
     End Sub
 
-    Public Sub write(Message As String)
+    Public Sub Write(Message As String)
         OutputStream.Write(Message)
     End Sub
 

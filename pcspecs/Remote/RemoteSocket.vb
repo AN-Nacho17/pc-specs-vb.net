@@ -1,17 +1,17 @@
 ﻿Imports System.Net.Sockets
 Imports System.Net
-Imports System.IO
 Imports System.Threading
+Imports System.IO
+
 Public Class RemoteSocket
 
     'Server socket variables
     Private IpAddress As IPAddress
     Private PORT As Integer = 8888
-    Private ServerSocket As TcpListener
+    Private Server As TcpListener
     Private RequestResponser As Threading.Thread
     Private StopListen As Boolean = False
     Private RemoteForm As RemoteForm
-    Public Shared ClientConnected As Boolean = False
 
     'Server possible requests to response
     Private SO_COMPLETE_NAME As Byte = 1
@@ -37,39 +37,40 @@ Public Class RemoteSocket
 
     'Clients that gonna be connected in server
     Private Client As TcpClient
-    Private ClientData As NetworkStream
+    Private OutputStream As StreamWriter
+    Private InputStream As StreamReader
 
-    Public Sub New(RemoteForm As RemoteForm)
-        Me.RemoteForm = RemoteForm
-        'GetIP()
-        IpAddress = IPAddress.Parse("127.0.0.1")
-        ServerSocket = New TcpListener(IpAddress, PORT)
-        RequestResponser = New Threading.Thread(AddressOf ResponseRequest)
-        StartListen()
+    Public Sub New()
+        Try
+            'GetIP() for testing only on local host
+            IpAddress = IPAddress.Parse("127.0.0.1")
+            Server = New TcpListener(IpAddress, PORT)
+            Server.Start()
+            Client = Server.AcceptTcpClient()
+            OutputStream = New StreamWriter(Client.GetStream)
+            InputStream = New StreamReader(Client.GetStream)
+            RequestResponser = New Thread(AddressOf ResponseRequest)
+            RequestResponser.Start()
+            MsgBox("CONECTADO")
+        Catch ex As Exception
+            MsgBox("ERROR: No se pudo conectar el servidor")
+        End Try
+    End Sub
+
+    Public Sub SetRemoteForm(RemForm As RemoteForm)
+        Me.RemoteForm = RemForm
     End Sub
 
     Public Function ShowClientIP() As String
         Return IpAddress.ToString
     End Function
 
-    Public Sub StartListen()
-        ServerSocket.Start()
-        RequestResponser.Start()
-    End Sub
-
-    Public Sub AcceptClient()
-        Client = ServerSocket.AcceptTcpClient()
-        ClientConnected = True
-    End Sub
-
-    Public Sub GetStreams()
-        ClientData = Client.GetStream()
-    End Sub
-
-    Private Sub CloseConnection()
-        Client.Close()
-        ServerSocket.Stop()
-        ClientConnected = False
+    Private Sub CloseConnectionWithClient()
+        Try
+            Client.Close()
+            StopListen = True
+        Catch ex As Exception
+        End Try
     End Sub
 
     Private Sub GetIP()
@@ -84,14 +85,10 @@ Public Class RemoteSocket
     End Sub
 
     Private Sub ResponseRequest()
-        AcceptClient()
-        GetStreams()
         While StopListen = False
-            If (ServerSocket.Pending = True) Then
-                'Logica para atender las consultas
-            End If
-            Thread.Sleep(150)
+            'Logica para atender las consultas
         End While
     End Sub
+
 
 End Class
