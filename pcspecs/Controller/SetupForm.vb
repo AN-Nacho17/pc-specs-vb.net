@@ -10,6 +10,7 @@
     'Ademas hace llamado a metodos para verificar el estado de la conexion
     'dada la direccion proporcionada
     Private Sub Connect()
+        FinalIpAddress = ""
         Dim IpPart1 As String = txt_ip1.Text
         Dim IpPart2 As String = txt_ip2.Text
         Dim IpPart3 As String = txt_ip3.Text
@@ -27,6 +28,7 @@
                 btn_test.Text = "Correcto"
                 btn_clean.Enabled = True
                 SetTxtBoxes(False)
+                MsgBox(FinalIpAddress)
             Else
                 btn_test.Enabled = False
                 btn_start.Enabled = False
@@ -35,10 +37,16 @@
                 'Caso de error donde la conexion a la ip dada fallo
                 btn_test.Text = "Incorrecto"
                 SetTxtBoxes(False)
+                MsgBox(FinalIpAddress)
             End If
         Else
-            'Caso de error donde las partes de la IP esten incorrectas
-            MsgBox("ERROR: Algunas de las partes ingresadas en los campos son erroneas" & "Recuerde utilizar datos numericos.")
+            btn_test.Enabled = False
+            btn_start.Enabled = False
+            btn_localHost.Enabled = False
+            btn_clean.Enabled = True
+            'Caso de error donde la conexion a la ip dada fallo
+            btn_test.Text = "Incorrecto"
+            SetTxtBoxes(False)
         End If
     End Sub
 
@@ -64,7 +72,9 @@
         'al siguiente formulario
         ControllerSocket = New ControllerSocket(FinalIpAddress)
         Me.Hide()
-        ControllerForm = New ControllerForm(ControllerSocket, Me)
+        ControllerForm = New ControllerForm()
+        ControllerForm.SetControllerSocket(ControllerSocket)
+        ControllerForm.SetSetupForm(Me)
         ControllerForm.Show()
     End Sub
 
@@ -74,7 +84,9 @@
         If IpManager.TestConnection(LOCALHOST_IPADDRESS) Then
             ControllerSocket = New ControllerSocket(LOCALHOST_IPADDRESS)
             Me.Hide()
-            ControllerForm = New ControllerForm(ControllerSocket, Me)
+            ControllerForm = New ControllerForm()
+            ControllerForm.SetControllerSocket(ControllerSocket)
+            ControllerForm.SetSetupForm(Me)
             ControllerForm.Show()
         End If
     End Sub

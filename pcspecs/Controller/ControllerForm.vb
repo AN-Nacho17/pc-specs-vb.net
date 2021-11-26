@@ -28,11 +28,13 @@ Public Class ControllerForm
     Private Const RESTART As Byte = 19
     Private Const CLOSE_SESSION As Byte = 20
 
-    'Constructor de clase que recibe el objeto controlador previamente inicializado
-    Public Sub New(ControlSock As ControllerSocket, Sform As SetupForm)
-        ControllerSocket = ControlSock
-        SetupForm = Sform
-        Me.CenterToScreen()
+    'Setter de clase que recibe el objeto controlador previamente inicializado
+    Public Sub SetControllerSocket(controlSocket As ControllerSocket)
+        ControllerSocket = controlSocket
+    End Sub
+
+    Public Sub SetSetupForm(SetForm As SetupForm)
+        SetupForm = SetForm
     End Sub
 
     'Sub de accion para solicitar el nombre completo del sistema operativo al equipo remoto
@@ -136,5 +138,17 @@ Public Class ControllerForm
         ControllerSocket.Request(CLOSE_SESSION)
     End Sub
 
+    Private Sub ControllerForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.CenterToScreen()
+    End Sub
+
+    Private Sub btn_back_Click(sender As Object, e As EventArgs) Handles btn_back.Click
+        Me.Hide()
+        SetupForm.Show()
+    End Sub
+
+
 
 End Class
+
+

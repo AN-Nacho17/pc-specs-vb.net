@@ -31,8 +31,9 @@ Public Class IpManager
         Dim DotCounter As Byte = 0
         Const MaxDotsInAddress = 3
         For Each IpPart In IpVector
-            If DotCounter <= MaxDotsInAddress Then
-                builder.Append(IpPart & ".")
+            builder.Append(IpPart)
+            If DotCounter < MaxDotsInAddress Then
+                builder.Append(".")
                 DotCounter += 1
             End If
         Next
