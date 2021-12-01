@@ -14,7 +14,7 @@ Public Class Connection
     End Sub
 
     Public Sub AnswerClient(Response As String)
-        Writer.Write(Response)
+        Writer.WriteLine(Response)
     End Sub
 
     Public Sub Write(Message As String)
@@ -25,13 +25,11 @@ Public Class Connection
     End Sub
 
     Public Function Read() As String
-        Read = Reader.ReadLine()
+        Read = Reader.ReadToEnd()
     End Function
 
     Public Function ReadRequest() As Byte
-        Dim StringRequest = Reader.ReadLine
-        Dim ParsedRequest = Convert.ToByte(StringRequest)
-        ReadRequest = ParsedRequest
+        ReadRequest = Reader.ReadLine()
     End Function
 
     Public Sub CloseClient()

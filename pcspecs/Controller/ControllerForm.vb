@@ -41,7 +41,8 @@ Public Class ControllerForm
 
     'Sub de accion para solicitar el nombre completo del sistema operativo al equipo remoto
     Private Sub btn_osName_Click(sender As Object, e As EventArgs) Handles btn_osName.Click
-        ControllerSocket.SendRequest(SO_COMPLETE_NAME)
+        ControllerSocket.Request(SO_COMPLETE_NAME)
+        'ControllerSocket.SendRequest(SO_COMPLETE_NAME)
     End Sub
 
     'Sub de accion para solicitar el nombre de la plataforma del sistema operativo al equipo remoto
@@ -144,6 +145,8 @@ Public Class ControllerForm
         Me.CenterToScreen()
     End Sub
 
+    'Sub de accion para solicitar al equipo remoto que acabe la conexion con el cliente actual
+    'y volver a generar una nuevo conexion.
     Private Sub btn_back_Click(sender As Object, e As EventArgs) Handles btn_back.Click
         Me.Hide()
         ControllerSocket.DissconnectClient()

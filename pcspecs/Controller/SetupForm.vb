@@ -87,6 +87,7 @@ Public Class SetupForm
         If ConnectSocket() Then
             Me.Hide()
             ControllerForm.Show()
+            ControllerSocket.Write("Hola")
         Else
             MsgBox("ERROR: El cliente no esta conectado")
         End If
@@ -96,9 +97,12 @@ Public Class SetupForm
     'expresamente
     Private Sub btn_localHost_Click(sender As Object, e As EventArgs) Handles btn_localHost.Click
         If IpManager.TestConnection(LOCALHOST_IPADDRESS) Then
-            ConnectSocket()
-            Me.Hide()
-            ControllerForm.Show()
+            If ConnectSocket() Then
+                Me.Hide()
+                ControllerForm.Show()
+            Else
+                MsgBox("ERROR: El cliente no esta conectado")
+            End If
         End If
     End Sub
 

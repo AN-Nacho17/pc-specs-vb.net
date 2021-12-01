@@ -12,7 +12,7 @@ Public Class RemoteSocket
     Private RequestManager As RequestManager
     Private RemoteForm As RemoteForm
     Private ClientReceiver As Thread
-    Private cr As Task
+    Private Connection As Connection
 
     Public Sub New()
         'GetIP() for testing only on local host
@@ -29,25 +29,24 @@ Public Class RemoteSocket
             Server = New TcpListener(ServerIpAddress, PORT)
             Server.Start()
             ServerRunning = True
-            'ClientReceiver = New Thread(AddressOf WaitForConnection)
-            'ClientReceiver.Start()
-            cr = New Task(AddressOf WaitForConnection)
-            cr.Start()
+            ClientReceiver = New Thread(AddressOf WaitForConnection)
+            ClientReceiver.Start()
         Catch ex As Exception
             MsgBox("ERROR: No se pudo iniciar el servidor")
+            Server.Stop()
+            ServerRunning = False
         End Try
-        Server.Stop()
-        ServerRunning = False
     End Sub
 
     Private Sub WaitForConnection()
         Try
-            While True
+            While ServerRunning
                 Client = Server.AcceptTcpClient
+                RemoteForm.UpdateLabelStatus()
+                Connection = New Connection(Client)
+                RequestManager = New RequestManager(Connection)
+                RequestManager.StartResponse()
             End While
-            RemoteForm.UpdateLabelStatus()
-            RequestManager = New RequestManager(Client)
-            RequestManager.StartResponse()
         Catch ex As Exception
         End Try
     End Sub

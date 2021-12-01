@@ -30,8 +30,8 @@ Public Class RequestManager
     Private Const CLOSE_SESSION As Byte = 20
     Private Const EXIT_CODE As Byte = 21
 
-    Public Sub New(Client As TcpClient)
-        Connection = New Connection(Client)
+    Public Sub New(Connec As Connection)
+        Me.Connection = Connec
     End Sub
 
     Public Sub StartResponse()
@@ -45,12 +45,13 @@ Public Class RequestManager
         Try
             While Listen
                 Request = Connection.ReadRequest
-                ManageRequest(Request)
+                MsgBox(Request)
+                'ManageRequest(Request)
             End While
         Catch ex As Exception
-
         End Try
     End Sub
+
     Private Sub ManageRequest(Request As Byte)
         Dim Response As String
         Select Case Request
