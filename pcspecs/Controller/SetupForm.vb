@@ -84,9 +84,12 @@ Public Class SetupForm
     Private Sub btn_start_Click(sender As Object, e As EventArgs) Handles btn_start.Click
         'Se crea el socket de conexion y se pasa el control logico de la aplicacion
         'al siguiente formulario
-        ConnectSocket()
-        Me.Hide()
-        ControllerForm.Show()
+        If ConnectSocket() Then
+            Me.Hide()
+            ControllerForm.Show()
+        Else
+            MsgBox("ERROR: El cliente no esta conectado")
+        End If
     End Sub
 
     'Subrutina cuando el usuario selecciona que se deseea conectar a LOCALHOST
@@ -99,16 +102,21 @@ Public Class SetupForm
         End If
     End Sub
 
-    Private Sub ConnectSocket()
+    'Sub para crear la instancia del socket controlador y realizar la conexion de los 
+    'sockets
+    Private Function ConnectSocket() As Boolean
         ControllerSocket = New ControllerSocket(LOCALHOST_IPADDRESS)
+        Dim ConnectionStablished As Boolean
         If ControllerSocket.IsConnected Then
             ControllerForm = New ControllerForm()
             ControllerForm.SetControllerSocket(ControllerSocket)
             ControllerForm.SetSetupForm(Me)
-            ControllerSocket.Write(FinalIpAddress)
+            ConnectionStablished = True
+        Else
+            ConnectionStablished = False
         End If
-
-    End Sub
+        ConnectSocket = ConnectionStablished
+    End Function
 
     'Sub para que cuando el texto de la ultima casilla es cambiado se permita presionar el boton de probar
     Private Sub txt_ip4_TextChanged(sender As Object, e As EventArgs) Handles txt_ip4.TextChanged

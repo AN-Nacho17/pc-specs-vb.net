@@ -7,28 +7,38 @@ Public Class ControllerSocket
     Private Const PORT As Integer = 5000
     Private OutputStream As StreamWriter
     Private InputStream As StreamReader
-    Private ClientConnected As Boolean
+    Private Const InfoRequestEnd As Byte = 12
+    Private Const ControlRequestEnd As Byte = 21
 
     Public Sub New(IpAddress As String)
+        Client = New TcpClient(IpAddress, PORT)
         Try
-            Client = New TcpClient(IpAddress, PORT)
-            If Client.GetStream.CanRead And Client.GetStream.CanWrite Then
-                OutputStream = New StreamWriter(Client.GetStream)
-                InputStream = New StreamReader(Client.GetStream)
-                ClientConnected = True
-            End If
+            OutputStream = New StreamWriter(Client.GetStream)
+            InputStream = New StreamReader(Client.GetStream)
+            OutputStream.Flush()
         Catch ex As Exception
             Client.Close()
-            ClientConnected = False
             MsgBox("ERROR: No se pudo establecer la conexion con el socket remoto")
         End Try
     End Sub
 
     Public Sub SendRequest(req As Byte)
+        Dim Response As String
         If InputStream.BaseStream.CanRead And OutputStream.BaseStream.CanWrite Then
             Try
-                Request(req)
-                MsgBox(req)
+                MsgBox("Consulta realizada")
+                'Caso de una solicitud de informacion
+                If req <= InfoRequestEnd Then
+                    Request(req)
+                    Response = InputStream.ReadLine
+                    If String.IsNullOrWhiteSpace(Response) = False Then
+                        MsgBox(Response)
+                    End If
+                End If
+                'Caso de una solicitud de control
+                If req > InfoRequestEnd And req <= ControlRequestEnd Then
+                    Request(req)
+                End If
             Catch ex As Exception
             End Try
         End If
@@ -44,15 +54,15 @@ Public Class ControllerSocket
     End Sub
 
     Public Function Read()
-        Read = InputStream.ReadToEnd()
+        Read = InputStream.ReadLine()
     End Function
 
     Public Sub DissconnectClient()
-        ClientConnected = False
+        Client.Close()
     End Sub
 
     Public Function IsConnected() As Boolean
-        IsConnected = ClientConnected
+        IsConnected = Client.Connected
     End Function
 
 

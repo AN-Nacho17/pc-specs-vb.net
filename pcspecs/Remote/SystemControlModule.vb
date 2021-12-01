@@ -1,12 +1,25 @@
 ﻿'Esta clase se encarga de realizar acciones para controlar el equipo con las 
 ' peticiones que se realizan. Su finalidad es controlar
+Imports System.Runtime.InteropServices
+
 Public Class SystemControlModule
 
-    Private Audio As Microsoft.VisualBasic.Devices.Audio
+    'Variables de clase que representan los comandos a enviar hacia la api de windows
+    'como comandos de audio y control de volumen
+    Const WM_APPCOMMAND As UInteger = &H319
+    Const APPCOMMAND_VOLUME_UP As UInteger = &HA
+    Const APPCOMMAND_VOLUME_DOWN As UInteger = &H9
+    Const APPCOMMAND_VOLUME_MUTE As UInteger = &H8
+
+    'Declaraciones necesarias para la interacion con el api de windows para llamadas como
+    'el control de sonidos.
+    <DllImport("user32.dll", SetLastError:=True, CharSet:=CharSet.Auto)>
+    Private Shared Function SendMessage(Msg As UInteger, wParam As IntPtr, lParam As IntPtr) As IntPtr
+    End Function
 
     'Funcion para realizar una captura de pantalla, su valor de retorno es un
     'mapa de bits a decodificar que contiene la imagen.
-    Public Function TakeScreenShot() As Bitmap
+    Public Shared Function TakeScreenShot() As Bitmap
         Dim LocalBmp As Bitmap
         Using Bmp As New Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height)
             Using Graph As Graphics = Graphics.FromImage(Bmp)
@@ -19,40 +32,40 @@ Public Class SystemControlModule
 
     'Funcion para subir el volumen del equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Sub volumeUp()
-
+    Public Shared Sub volumeUp()
+        SendMessage(WM_APPCOMMAND, &H30292, APPCOMMAND_VOLUME_UP * &H10000)
     End Sub
     'Funcion para bajar el volumen del equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Sub volumenDown()
-
+    Public Shared Sub volumenDown()
+        SendMessage(WM_APPCOMMAND, &H30292, APPCOMMAND_VOLUME_DOWN * &H10000)
     End Sub
 
     'Funcion para silenciar el equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Sub muteAudio()
-
+    Public Shared Sub muteAudio()
+        SendMessage(WM_APPCOMMAND, &H200EB0, APPCOMMAND_VOLUME_MUTE * &H10000)
     End Sub
     'Funcion para apagar el equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Sub shutdown()
+    Public Shared Sub shutdown()
         shellCall("shutdown /s")
     End Sub
 
     'Funcion para reiniciar el equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Sub reStart()
+    Public Shared Sub reStart()
         shellCall("shutdown /r")
     End Sub
     'Funcion para cerrar la sesion de Windows del equipo el equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Sub closeUserSession()
+    Public Shared Sub closeUserSession()
         shellCall("shutdown /l")
     End Sub
 
     'Metodo para llamar a una funcion shell para iniciar un proceso de una
     'instancia de cmd y luego enviarle el comando DOS a ejecutar
-    Public Sub shellCall(shellCommand As String)
+    Private Shared Sub shellCall(shellCommand As String)
         'La tarea devuelve un PID del proceso iniciado
         Dim processFinished = 0
         Dim pid As Integer

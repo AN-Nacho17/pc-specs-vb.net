@@ -39,7 +39,7 @@ Partial Class RemoteForm
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Location = New System.Drawing.Point(-7, -5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(989, 89)
+        Me.Panel1.Size = New System.Drawing.Size(1036, 89)
         Me.Panel1.TabIndex = 0
         '
         'Label1
@@ -70,7 +70,7 @@ Partial Class RemoteForm
         Me.lb_status.BackColor = System.Drawing.Color.PowderBlue
         Me.lb_status.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lb_status.ForeColor = System.Drawing.Color.Black
-        Me.lb_status.Location = New System.Drawing.Point(676, 150)
+        Me.lb_status.Location = New System.Drawing.Point(658, 153)
         Me.lb_status.Name = "lb_status"
         Me.lb_status.Size = New System.Drawing.Size(279, 50)
         Me.lb_status.TabIndex = 2
@@ -81,7 +81,7 @@ Partial Class RemoteForm
         Me.Label3.BackColor = System.Drawing.Color.RoyalBlue
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Label3.ForeColor = System.Drawing.Color.Orange
-        Me.Label3.Location = New System.Drawing.Point(12, 275)
+        Me.Label3.Location = New System.Drawing.Point(21, 275)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(525, 50)
         Me.Label3.TabIndex = 3
@@ -104,7 +104,7 @@ Partial Class RemoteForm
         Me.Label4.BackColor = System.Drawing.Color.RoyalBlue
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Label4.ForeColor = System.Drawing.Color.Orange
-        Me.Label4.Location = New System.Drawing.Point(21, 434)
+        Me.Label4.Location = New System.Drawing.Point(21, 393)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(525, 50)
         Me.Label4.TabIndex = 5
@@ -116,7 +116,7 @@ Partial Class RemoteForm
         Me.lb_ipController.BackColor = System.Drawing.Color.PowderBlue
         Me.lb_ipController.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lb_ipController.ForeColor = System.Drawing.Color.Black
-        Me.lb_ipController.Location = New System.Drawing.Point(584, 434)
+        Me.lb_ipController.Location = New System.Drawing.Point(584, 393)
         Me.lb_ipController.Name = "lb_ipController"
         Me.lb_ipController.Size = New System.Drawing.Size(348, 50)
         Me.lb_ipController.TabIndex = 6
@@ -127,7 +127,7 @@ Partial Class RemoteForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.RoyalBlue
-        Me.ClientSize = New System.Drawing.Size(980, 575)
+        Me.ClientSize = New System.Drawing.Size(1025, 527)
         Me.Controls.Add(Me.lb_ipController)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.lb_ipServer)

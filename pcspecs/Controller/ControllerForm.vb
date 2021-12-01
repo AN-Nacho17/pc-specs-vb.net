@@ -27,6 +27,8 @@ Public Class ControllerForm
     Private Const SHUTDOWN As Byte = 18
     Private Const RESTART As Byte = 19
     Private Const CLOSE_SESSION As Byte = 20
+    Private Const EXIT_CODE As Byte = 21
+
 
     'Setter de clase que recibe el objeto controlador previamente inicializado
     Public Sub SetControllerSocket(controlSocket As ControllerSocket)
@@ -143,11 +145,13 @@ Public Class ControllerForm
     End Sub
 
     Private Sub btn_back_Click(sender As Object, e As EventArgs) Handles btn_back.Click
-        ControllerSocket.Write("CERRADA LA CONEXION")
         Me.Hide()
+        ControllerSocket.DissconnectClient()
+        ControllerSocket.SendRequest(EXIT_CODE)
         SetupForm.setFormToInitialConfig()
         SetupForm.Show()
     End Sub
+
 
 
 
