@@ -47,6 +47,7 @@ Public Class RemoteSocket
                 RequestManager.StartResponse()
             End While
         Catch ex As Exception
+            MsgBox(ex.Message)
         End Try
     End Sub
 
