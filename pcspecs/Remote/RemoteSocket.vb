@@ -13,7 +13,6 @@ Public Class RemoteSocket
     Private RequestManager As RequestManager
     Private RemoteForm As RemoteForm
     Private ClientReceiver As Thread
-    Private Connection As Connection
 
     Public Sub New()
         'GetIP() for testing only on local host
@@ -45,6 +44,7 @@ Public Class RemoteSocket
                 Client = Server.AcceptTcpClient
                 RemoteForm.UpdateLabelStatus()
                 RequestManager = New RequestManager(New Connection(Client))
+                RequestManager.StartResponse()
             End While
         Catch ex As Exception
         End Try
