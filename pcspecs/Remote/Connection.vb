@@ -15,10 +15,12 @@ Public Class Connection
 
     Public Sub AnswerClient(Response As String)
         Writer.WriteLine(Response)
+        Writer.Flush()
     End Sub
 
     Public Sub Write(Message As String)
         Writer.Write(Message)
+        Writer.Flush()
     End Sub
 
     Public Sub WriteObject(Bitmap As Bitmap)
@@ -34,6 +36,8 @@ Public Class Connection
 
     Public Sub CloseClient()
         Try
+            Writer.Close()
+            Reader.Close()
             Client.Close()
         Catch ex As Exception
         End Try

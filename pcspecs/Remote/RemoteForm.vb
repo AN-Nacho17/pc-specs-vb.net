@@ -11,8 +11,8 @@
         lb_status.Text = "ESPERANDO"
     End Sub
 
-    Public Sub UpdateLabelStatus()
-        lb_status.Text = "CONECTADO"
+    Public Sub UpdateLabelStatus(Status As String)
+        lb_status.Text = Status
     End Sub
 
     Public Sub GetRemoteUserIp(IpAddres As String)

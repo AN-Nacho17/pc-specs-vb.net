@@ -42,7 +42,7 @@ Public Class RemoteSocket
         Try
             While ServerRunning
                 Client = Server.AcceptTcpClient
-                RemoteForm.UpdateLabelStatus()
+                RemoteForm.UpdateLabelStatus("CONECTADO")
                 RequestManager = New RequestManager(New Connection(Client))
                 RequestManager.StartResponse()
             End While

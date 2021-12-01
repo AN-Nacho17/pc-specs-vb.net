@@ -42,7 +42,7 @@ Public Class ControllerForm
     'Sub de accion para solicitar el nombre completo del sistema operativo al equipo remoto
     Private Sub btn_osName_Click(sender As Object, e As EventArgs) Handles btn_osName.Click
         ControllerSocket.Request(SO_COMPLETE_NAME)
-        'ControllerSocket.SendRequest(SO_COMPLETE_NAME)
+        MsgBox(ControllerSocket.Read)
     End Sub
 
     'Sub de accion para solicitar el nombre de la plataforma del sistema operativo al equipo remoto
@@ -155,9 +155,6 @@ Public Class ControllerForm
         SetupForm.Show()
     End Sub
 
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
 End Class
 
 

