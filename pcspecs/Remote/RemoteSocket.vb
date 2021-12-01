@@ -1,11 +1,12 @@
 ﻿Imports System.Net.Sockets
 Imports System.Net
 Imports System.Threading
+Imports System.IO
 
 Public Class RemoteSocket
 
     Private ServerIpAddress As IPAddress
-    Private PORT As Integer = 5000
+    Private Const PORT As Integer = 5000
     Private Server As TcpListener
     Private ServerRunning As Boolean
     Private Client As TcpClient
@@ -43,9 +44,7 @@ Public Class RemoteSocket
             While ServerRunning
                 Client = Server.AcceptTcpClient
                 RemoteForm.UpdateLabelStatus()
-                Connection = New Connection(Client)
-                RequestManager = New RequestManager(Connection)
-                RequestManager.StartResponse()
+                RequestManager = New RequestManager(New Connection(Client))
             End While
         Catch ex As Exception
         End Try

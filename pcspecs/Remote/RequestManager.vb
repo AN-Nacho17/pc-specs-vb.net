@@ -4,7 +4,7 @@ Imports System.Threading
 Public Class RequestManager
 
     Private Connection As Connection
-    Private ResponseThread As Thread
+    'Private ResponseThread As Thread
     Private Listen = True
 
     'Server possible requests to response
@@ -36,8 +36,9 @@ Public Class RequestManager
 
     Public Sub StartResponse()
         Control.CheckForIllegalCrossThreadCalls = False
-        ResponseThread = New Thread(AddressOf HandleRequest)
-        ResponseThread.Start()
+        'ResponseThread = New Thread(AddressOf HandleRequest)
+        'ResponseThread.Start()
+        HandleRequest
     End Sub
 
     Private Sub HandleRequest()
@@ -46,7 +47,7 @@ Public Class RequestManager
             While Listen
                 Request = Connection.ReadRequest
                 MsgBox(Request)
-                'ManageRequest(Request)
+                ManageRequest(Request)
             End While
         Catch ex As Exception
         End Try

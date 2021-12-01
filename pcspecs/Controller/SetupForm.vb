@@ -87,7 +87,6 @@ Public Class SetupForm
         If ConnectSocket() Then
             Me.Hide()
             ControllerForm.Show()
-            ControllerSocket.Write("Hola")
         Else
             MsgBox("ERROR: El cliente no esta conectado")
         End If
