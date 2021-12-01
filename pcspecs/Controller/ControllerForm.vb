@@ -149,8 +149,8 @@ Public Class ControllerForm
     'y volver a generar una nuevo conexion.
     Private Sub btn_back_Click(sender As Object, e As EventArgs) Handles btn_back.Click
         Me.Hide()
-        ControllerSocket.DissconnectClient()
         ControllerSocket.SendRequest(EXIT_CODE)
+        ControllerSocket.DissconnectClient()
         SetupForm.setFormToInitialConfig()
         SetupForm.Show()
     End Sub
