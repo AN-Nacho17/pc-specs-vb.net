@@ -25,11 +25,11 @@ Public Class Connection
     End Sub
 
     Public Function Read() As String
-        Read = Reader.ReadToEnd()
+        Return Reader.ReadToEnd()
     End Function
 
-    Public Function ReadRequest() As Byte
-        ReadRequest = Reader.ReadLine()
+    Public Function ReadRequest() As String
+        Return Reader.ReadLine()
     End Function
 
     Public Sub CloseClient()
