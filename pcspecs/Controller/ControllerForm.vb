@@ -6,6 +6,8 @@ Public Class ControllerForm
     Private ControllerSocket As ControllerSocket
     'Instancia de la ventana padre (menu principal)
     Private SetupForm As SetupForm
+    'Instancia del formulario auxiliar para mostar grandes mensajes
+    Private BigForm As BigForm
     'Constantes que representan las solicitudes del usuario mediante los botones
     Private Const SO_COMPLETE_NAME As String = "1"
     Private Const SO_PLATFORM As String = "2"
@@ -29,7 +31,6 @@ Public Class ControllerForm
     Private Const CLOSE_SESSION As String = "20"
     Private Const EXIT_CODE As String = "21"
 
-
     'Setter de clase que recibe el objeto controlador previamente inicializado
     Public Sub SetControllerSocket(controlSocket As ControllerSocket)
         ControllerSocket = controlSocket
@@ -42,62 +43,79 @@ Public Class ControllerForm
     'Sub de accion para solicitar el nombre completo del sistema operativo al equipo remoto
     Private Sub btn_osName_Click(sender As Object, e As EventArgs) Handles btn_osName.Click
         ControllerSocket.Request(SO_COMPLETE_NAME)
-        MsgBox(ControllerSocket.Read)
+        ShowAsDialog("Nombre completo del sistema operativo: " & ControllerSocket.Read)
     End Sub
 
     'Sub de accion para solicitar el nombre de la plataforma del sistema operativo al equipo remoto
     Private Sub btn_osPlatform_Click(sender As Object, e As EventArgs) Handles btn_osPlatform.Click
         ControllerSocket.Request(SO_PLATFORM)
+        ShowAsDialog("Nombre de la plataforma: " & ControllerSocket.Read)
     End Sub
 
     'Sub de accion para solicitar la version del sistema operativo al equipo remoto
     Private Sub btn_osVersion_Click(sender As Object, e As EventArgs) Handles btn_osVersion.Click
         ControllerSocket.Request(SO_VERSION)
+        ShowAsDialog("Version del sistema operativo: " & ControllerSocket.Read)
     End Sub
 
     'Sub de accion para solicitar el nombre de el equipo del sistema operativo al equipo remoto
     Private Sub btn_pcName_Click(sender As Object, e As EventArgs) Handles btn_pcName.Click
         ControllerSocket.Request(PC_NAME)
+        ShowAsDialog("Nombre del equipo: " & ControllerSocket.Read)
     End Sub
 
     'Sub de accion para solicitar la informacion del CPU al equipo remoto
     Private Sub btn_cpuInfo_Click(sender As Object, e As EventArgs) Handles btn_cpuInfo.Click
         ControllerSocket.Request(CPU_INFO)
+        ShowAsDialog("Informacion del CPU del equipo: " & ControllerSocket.Read)
+
     End Sub
 
     'Sub de accion para solicitar la cantidad de memoria RAM al equipo remoto
     Private Sub btn_totalRam_Click(sender As Object, e As EventArgs) Handles btn_totalRam.Click
         ControllerSocket.Request(TOTAL_RAM)
+        ShowAsDialog("Memoria RAM total del equipo: " & ControllerSocket.Read)
     End Sub
 
     'Sub de accion para solicitar la informacion de las unidades de disco del equipo remoto
     Private Sub btn_drives_Click(sender As Object, e As EventArgs) Handles btn_drives.Click
         ControllerSocket.Request(DISC_UNITS_LIST)
+        ShowAsDialog("Informacion de las unidades de disco: " & vbCr & ControllerSocket.BigRead)
+
     End Sub
 
     'Sub de accion para solicitar la resolucion de la pantalla del equipo remoto
     Private Sub btn_screenRes_Click(sender As Object, e As EventArgs) Handles btn_screenRes.Click
         ControllerSocket.Request(SCREEN_RESOLUTION)
+        ShowAsDialog("Resolucion de la pantalla del equipo: " & ControllerSocket.Read)
     End Sub
 
     'Sub de accion para solicitar el nombre de usuario que inicio sesion dentro de la maquina
     Private Sub btn_user_Click(sender As Object, e As EventArgs) Handles btn_user.Click
         ControllerSocket.Request(LOGGED_USER_NAME)
+        ShowAsDialog("Nombre del usuario que inicio sesion: " & ControllerSocket.Read)
     End Sub
 
     'Sub de accion para solicitar la zona horaria del equipo remoto
     Private Sub btn_timeZone_Click(sender As Object, e As EventArgs) Handles btn_timeZone.Click
         ControllerSocket.Request(TIME_ZONE)
+        ShowAsDialog("Zona horaria del sistema: " & ControllerSocket.Read)
+
     End Sub
 
     'Sub de accion para solicitar la fecha y hora del equipo remoto
     Private Sub btn_dateTime_Click(sender As Object, e As EventArgs) Handles btn_dateTime.Click
         ControllerSocket.Request(DATE_AND_TIME)
+        ShowAsDialog("Fecha y hora del equipo: " & ControllerSocket.Read)
+
     End Sub
 
     'Sub de accion para solicitar la lista de procesos en ejecucion dentro del equipo remoto
     Private Sub btn_Process_Click(sender As Object, e As EventArgs) Handles btn_Process.Click
+        BigForm = New BigForm()
         ControllerSocket.Request(PROCESS_RUNNING_LIST)
+        BigForm.SetText("Lista de procesos en ejecucion: " & vbCr & ControllerSocket.BigRead)
+        BigForm.Show()
     End Sub
 
     'Sub de accion para solicitarle al equipo remoto que realize una captura de pantalla
@@ -143,6 +161,10 @@ Public Class ControllerForm
 
     Private Sub ControllerForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CenterToScreen()
+    End Sub
+
+    Private Sub ShowAsDialog(Message As String)
+        MsgBox(Message, MsgBoxStyle.Information)
     End Sub
 
     'Sub de accion para solicitar al equipo remoto que acabe la conexion con el cliente actual

@@ -42,19 +42,20 @@ Public Class SystemInfoModule
     'Funcion para regresar la informacion del cpu
     'No recibe parametros y el valor de retorno es una cadena
     Public Shared Function getCpuInfo() As String
-        Dim cpuInfo As String
         Dim regAddres As String
-        regAddres = "Equipo\HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\1"
-        cpuInfo = My.Computer.Registry.GetValue(regAddres, "ProcessorNameString", Nothing)
-        getCpuInfo = cpuInfo
+        regAddres = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0\", "ProcessorNameString", Nothing)
+        getCpuInfo = regAddres
     End Function
 
     'Funcion para regresar la cantidad de memoria RAM expresada en GB
     'No recibe parametros y el valor de retorno es un entero
-    Public Shared Function getRam() As Integer
-        Dim totalRam As Integer
-        totalRam = My.Computer.Info.TotalPhysicalMemory
-        getRam = toGigaBytes(totalRam)
+    Public Shared Function getRam() As String
+        'Dim totalRam As Integer
+        'totalRam = My.Computer.Info.TotalPhysicalMemory
+        'getRam = toGigaBytes(totalRam) & " GB"
+        'totalRam = Integer.Parse(totalRam)
+        'getRam = totalRam.ToString(totalRam) & " GB"
+        Return toGigaBytes(My.Computer.Info.TotalPhysicalMemory)
     End Function
 
     'Funcion para regresar la informacion de las unidades de disco
@@ -70,11 +71,11 @@ Public Class SystemInfoModule
         End Try
         For Each drive As System.IO.DriveInfo In diskInfoManager
             If drive.IsReady Then
-                drivesInfo += "Letra de unidad: " + drive.Name + ":\"
-                drivesInfo += "Espacio total en disco: " + toGigaBytes(drive.TotalSize)
-                drivesInfo += "Espacio utilizado en disco: " + toGigaBytes((drive.TotalSize - drive.TotalFreeSpace))
-                drivesInfo += "Espacio libre en disco: " + toGigaBytes(drive.TotalFreeSpace)
-                drivesInfo += "Sistema de archivos: " + drive.DriveFormat
+                drivesInfo += "Letra de unidad: " & drive.Name & "?"
+                drivesInfo += "Espacio total en disco: " & toGigaBytes(drive.TotalSize) & "?"
+                drivesInfo += "Espacio utilizado en disco: " & toGigaBytes((drive.TotalSize - drive.TotalFreeSpace)) & "?"
+                drivesInfo += "Espacio libre en disco: " & toGigaBytes(drive.TotalFreeSpace) & "?"
+                drivesInfo += "Sistema de archivos: " & drive.DriveFormat & "?"
             End If
         Next
         getDrivesInformation = drivesInfo
@@ -86,16 +87,14 @@ Public Class SystemInfoModule
         Dim screenRes As String
         Dim screenWidth As Integer = Screen.PrimaryScreen.Bounds.Width
         Dim screenHeight As Integer = Screen.PrimaryScreen.Bounds.Height
-        screenRes = screenWidth + " x " + screenHeight
+        screenRes = screenWidth & " x " & screenHeight
         getScreenResolution = screenRes
     End Function
 
     'Funcion para regresar la cadena que contiene el nombre de usuario que inicio sesion 
     'no recibe parametros
     Public Shared Function getUserName() As String
-        Dim userName As String
-        userName = My.User.Name
-        getUserName = userName
+        Return My.User.Name
     End Function
 
     'Funcion para regresar la zona horaria del sistema en formato cadena, no recibe
@@ -122,7 +121,7 @@ Public Class SystemInfoModule
         Try
             processList = Process.GetProcesses
             For Each process As Process In processList
-                processInfoList += "PID:   " & process.Id & "   Nombre del proceso:   " & process.ProcessName
+                processInfoList += "PID: " & vbTab & process.Id & vbTab & " Nombre del proceso: " & vbTab & process.ProcessName & "?"
             Next
         Catch ex As Exception
         End Try
@@ -131,13 +130,8 @@ Public Class SystemInfoModule
 
     'Funcion para convertir una determinada cantidad a gigabtyes dada una cantidad en bytes
     'Recibe la cantidad de bytes como un lon y devuelve se equivalente en gigas
-    Private Shared Function toGigaBytes(bytes As Long)
-        Dim divStep As Byte = 4
-        Dim divAmount As Integer = 1024
-        For j = 0 To divStep
-            bytes /= divAmount
-        Next
-        toGigaBytes = bytes
+    Private Shared Function toGigaBytes(bytes As Long) As String
+        toGigaBytes = Math.Round(bytes / (1073741824), 1) & " GB "
     End Function
 
 

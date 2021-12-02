@@ -6,6 +6,7 @@ Public Class RequestManager
     Private Connection As Connection
     Private ResponseThread As Thread
     Private Listen = True
+    Private RemoteForm As RemoteForm
 
     'Server possible requests to response
     Private Const SO_COMPLETE_NAME As String = "1"
@@ -34,7 +35,12 @@ Public Class RequestManager
         Me.Connection = Connec
     End Sub
 
+    Public Sub SetRemoteForm(RemoteForm As RemoteForm)
+        Me.RemoteForm = RemoteForm
+    End Sub
+
     Public Sub StartResponse()
+        Control.CheckForIllegalCrossThreadCalls = False
         ResponseThread = New Thread(AddressOf HandleRequest)
         ResponseThread.Start()
     End Sub
@@ -44,7 +50,6 @@ Public Class RequestManager
         Try
             While Listen
                 Request = Connection.ReadRequest
-                MsgBox(Request)
                 ManageRequest(Request)
             End While
         Catch ex As Exception
@@ -53,6 +58,7 @@ Public Class RequestManager
 
     Private Sub ManageRequest(Request As String)
         Dim Response As String = ""
+        Dim BigResponse As Boolean = False
         Select Case Request
             Case SO_COMPLETE_NAME
                 Response = SystemInfoModule.getOsFullName
@@ -68,6 +74,7 @@ Public Class RequestManager
                 Response = SystemInfoModule.getRam
             Case DISC_UNITS_LIST
                 Response = SystemInfoModule.getDrivesInformation
+                BigResponse = True
             Case SCREEN_RESOLUTION
                 Response = SystemInfoModule.getScreenResolution
             Case LOGGED_USER_NAME
@@ -78,6 +85,7 @@ Public Class RequestManager
                 Response = SystemInfoModule.getDateTime
             Case PROCESS_RUNNING_LIST
                 Response = SystemInfoModule.getProcessList
+                BigResponse = True
             Case TAKE_SCREESHOT
                 SystemControlModule.TakeScreenShot()
             Case SEND_MESSAGE
@@ -97,6 +105,7 @@ Public Class RequestManager
                 SystemControlModule.closeUserSession()
             Case EXIT_CODE
                 Listen = False
+                RemoteForm.UpdateLabelStatus("ESPERANDO")
                 Connection.CloseClient()
         End Select
         If (String.IsNullOrWhiteSpace(Response) = False) Then

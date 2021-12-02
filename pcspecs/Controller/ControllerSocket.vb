@@ -35,7 +35,6 @@ Public Class ControllerSocket
     Public Sub Write(Message As String)
         Writer.Write(Message)
         Writer.Flush()
-
     End Sub
 
     Public Sub WriteLine(Request As String)
@@ -45,6 +44,16 @@ Public Class ControllerSocket
 
     Public Function Read() As String
         Return Reader.ReadLine()
+    End Function
+
+    Public Function BigRead() As String
+        Dim Read As String = ""
+        Dim SubRead As String()
+        SubRead = Reader.ReadLine().Split("?")
+        For Each part In SubRead
+            Read += part & vbCr
+        Next
+        BigRead = Read
     End Function
 
     Public Sub DissconnectClient()

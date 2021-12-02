@@ -44,6 +44,7 @@ Public Class RemoteSocket
                 Client = Server.AcceptTcpClient
                 RemoteForm.UpdateLabelStatus("CONECTADO")
                 RequestManager = New RequestManager(New Connection(Client))
+                RequestManager.SetRemoteForm(RemoteForm)
                 RequestManager.StartResponse()
             End While
         Catch ex As Exception
