@@ -1,6 +1,9 @@
 ﻿Imports System.Net.Sockets
 Imports System.Threading
 
+'Clase encargada de respaldar la logica de atencion de peticiones y atenderlas
+'devolviendo la informacion deseada segun el requirimiento
+'Tiene el objeto conexion para escribir y leer datos del cliente
 Public Class RequestManager
 
     Private Connection As Connection
@@ -35,17 +38,22 @@ Public Class RequestManager
         Me.Connection = Connec
     End Sub
 
+    'Al igual que en la clase RemoteSocket, en esta clase se necesita obtener la instancia
+    'de la ventana del equipo remoto y actualizar las etiquetas de estado
     Public Sub SetRemoteForm(RemoteForm As RemoteForm)
         Me.RemoteForm = RemoteForm
         Control.CheckForIllegalCrossThreadCalls = False
     End Sub
 
+    'Metodo que crea un hilo y empieza a atender consultas del cliente
     Public Sub StartResponse()
         Control.CheckForIllegalCrossThreadCalls = False
         ResponseThread = New Thread(AddressOf HandleRequest)
         ResponseThread.Start()
     End Sub
 
+    'Metodo que lee la peticion del cliente y la atiende con otro metodo que se encarga
+    ' de verificar la peticion y responderla
     Private Sub HandleRequest()
         Dim Request As String
         Try
@@ -57,6 +65,8 @@ Public Class RequestManager
         End Try
     End Sub
 
+    'Metod que se encarga de recibir el dato enviado para responderle, enviandole
+    'informacion del equipo remoto con los objetos estaticos SystemInfoModule y SystemControlModule
     Private Sub ManageRequest(Request As String)
         Dim Response As String = ""
         Select Case Request
