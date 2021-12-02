@@ -7,6 +7,8 @@ Public Class RequestManager
     Private ResponseThread As Thread
     Private Listen = True
     Private RemoteForm As RemoteForm
+    Private UserInput As String
+    Private InputChecker As Threading.Thread
 
     'Server possible requests to response
     Private Const SO_COMPLETE_NAME As String = "1"
@@ -37,6 +39,7 @@ Public Class RequestManager
 
     Public Sub SetRemoteForm(RemoteForm As RemoteForm)
         Me.RemoteForm = RemoteForm
+        Control.CheckForIllegalCrossThreadCalls = False
     End Sub
 
     Public Sub StartResponse()
@@ -58,7 +61,6 @@ Public Class RequestManager
 
     Private Sub ManageRequest(Request As String)
         Dim Response As String = ""
-        Dim BigResponse As Boolean = False
         Select Case Request
             Case SO_COMPLETE_NAME
                 Response = SystemInfoModule.getOsFullName
@@ -74,7 +76,6 @@ Public Class RequestManager
                 Response = SystemInfoModule.getRam
             Case DISC_UNITS_LIST
                 Response = SystemInfoModule.getDrivesInformation
-                BigResponse = True
             Case SCREEN_RESOLUTION
                 Response = SystemInfoModule.getScreenResolution
             Case LOGGED_USER_NAME
@@ -85,24 +86,26 @@ Public Class RequestManager
                 Response = SystemInfoModule.getDateTime
             Case PROCESS_RUNNING_LIST
                 Response = SystemInfoModule.getProcessList
-                BigResponse = True
             Case TAKE_SCREESHOT
                 SystemControlModule.TakeScreenShot()
             Case SEND_MESSAGE
-                Dim Message As String = Connection.Read()
-                MsgBox(Message)
+                Dim Message As String = ""
+                While String.IsNullOrEmpty(Message)
+                    Message = Connection.Read()
+                End While
+                RemoteForm.SetOutputText(Message)
             Case VOL_UP
-                SystemControlModule.volumeUp()
+                SystemControlModule.VolumeUp()
             Case VOL_DOWN
-                SystemControlModule.volumenDown()
+                SystemControlModule.VolumeDown()
             Case MUTE_AUDIO
-                SystemControlModule.muteAudio()
+                SystemControlModule.Mute()
             Case SHUTDOWN
-                SystemControlModule.shutdown()
+                SystemControlModule.Shutdown()
             Case RESTART
-                SystemControlModule.reStart()
+                SystemControlModule.ReStart()
             Case CLOSE_SESSION
-                SystemControlModule.closeUserSession()
+                SystemControlModule.CloseUserSession()
             Case EXIT_CODE
                 Listen = False
                 RemoteForm.UpdateLabelStatus("ESPERANDO")

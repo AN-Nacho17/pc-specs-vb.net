@@ -6,6 +6,9 @@ Public Class ControllerForm
     Private ControllerSocket As ControllerSocket
     'Instancia de la ventana padre (menu principal)
     Private SetupForm As SetupForm
+    'Instancia de la venetana para el input del usuario 
+    Private InputForm As InputForm
+    Private CheckingThread As Threading.Thread
     'Instancia del formulario auxiliar para mostar grandes mensajes
     Private BigForm As BigForm
     'Constantes que representan las solicitudes del usuario mediante los botones
@@ -107,7 +110,6 @@ Public Class ControllerForm
     Private Sub btn_dateTime_Click(sender As Object, e As EventArgs) Handles btn_dateTime.Click
         ControllerSocket.Request(DATE_AND_TIME)
         ShowAsDialog("Fecha y hora del equipo: " & ControllerSocket.Read)
-
     End Sub
 
     'Sub de accion para solicitar la lista de procesos en ejecucion dentro del equipo remoto
@@ -126,6 +128,16 @@ Public Class ControllerForm
     'Sub de accion para enviar un mensaje al equipo remoto
     Private Sub btn_sendMessage_Click(sender As Object, e As EventArgs) Handles btn_sendMessage.Click
         ControllerSocket.Request(SEND_MESSAGE)
+        InputForm = New InputForm()
+        InputForm.Show()
+        CheckingThread = New Threading.Thread(AddressOf CheckUserInputStatus)
+        CheckingThread.Start()
+    End Sub
+    Private Sub CheckUserInputStatus()
+        While InputForm.GetIsHide = False
+        End While
+        Dim message As String = InputForm.GetUserInput
+        ControllerSocket.WriteLine(message)
     End Sub
 
     'Sub de accion para solicitarle al equipo remoto que suba el volumen
@@ -161,6 +173,7 @@ Public Class ControllerForm
 
     Private Sub ControllerForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CenterToScreen()
+        Control.CheckForIllegalCrossThreadCalls = False
     End Sub
 
     Private Sub ShowAsDialog(Message As String)

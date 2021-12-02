@@ -19,7 +19,7 @@ Public Class SystemControlModule
 
     'Funcion para realizar una captura de pantalla, su valor de retorno es un
     'mapa de bits a decodificar que contiene la imagen.
-    Public Shared Function TakeScreenShot() As Bitmap
+    Public Shared Function TakeScreenShot() As String
         Dim LocalBmp As Bitmap
         Using Bmp As New Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height)
             Using Graph As Graphics = Graphics.FromImage(Bmp)
@@ -27,39 +27,39 @@ Public Class SystemControlModule
                 LocalBmp = Bmp
             End Using
         End Using
-        TakeScreenShot = LocalBmp
+        TakeScreenShot = LocalBmp.ToString
     End Function
 
     'Funcion para subir el volumen del equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Shared Sub volumeUp()
+    Public Shared Sub VolumeUp()
         SendMessage(WM_APPCOMMAND, &H30292, APPCOMMAND_VOLUME_UP * &H10000)
     End Sub
     'Funcion para bajar el volumen del equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Shared Sub volumenDown()
+    Public Shared Sub VolumeDown()
         SendMessage(WM_APPCOMMAND, &H30292, APPCOMMAND_VOLUME_DOWN * &H10000)
     End Sub
 
     'Funcion para silenciar el equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Shared Sub muteAudio()
+    Public Shared Sub Mute()
         SendMessage(WM_APPCOMMAND, &H200EB0, APPCOMMAND_VOLUME_MUTE * &H10000)
     End Sub
     'Funcion para apagar el equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Shared Sub shutdown()
+    Public Shared Sub Shutdown()
         shellCall("shutdown /s")
     End Sub
 
     'Funcion para reiniciar el equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Shared Sub reStart()
+    Public Shared Sub ReStart()
         shellCall("shutdown /r")
     End Sub
     'Funcion para cerrar la sesion de Windows del equipo el equipo, no necesita parametros y no posee
     'valor de retorno
-    Public Shared Sub closeUserSession()
+    Public Shared Sub CloseUserSession()
         shellCall("shutdown /l")
     End Sub
 
