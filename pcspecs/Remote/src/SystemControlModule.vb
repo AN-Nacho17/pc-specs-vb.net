@@ -2,7 +2,6 @@
 ' peticiones que se realizan. Su finalidad es controlar
 Imports System.Runtime.InteropServices
 
-
 Public Class SystemControlModule
 
     'Variables de clase que representan los comandos a enviar hacia la api de windows
@@ -15,7 +14,7 @@ Public Class SystemControlModule
     'Declaraciones necesarias para la interacion con el api de windows para llamadas como
     'el control de sonidos.
     <DllImport("user32.dll", SetLastError:=True, CharSet:=CharSet.Auto)>
-    Public Shared Function SendMessage(Msg As UInteger, wParam As IntPtr, lParam As IntPtr) As IntPtr
+    Private Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As UInteger, ByVal wParam As IntPtr, ByVal lParam As IntPtr) As IntPtr
     End Function
 
     'Funcion para realizar una captura de pantalla, su valor de retorno es un
@@ -34,19 +33,19 @@ Public Class SystemControlModule
     'Funcion para subir el volumen del equipo, no necesita parametros y no posee
     'valor de retorno
     Public Shared Sub VolumeUp()
-        SendMessage(WM_APPCOMMAND, &H30292, APPCOMMAND_VOLUME_UP * &H10000)
+        SendMessage(Application.OpenForms(0).Handle, WM_APPCOMMAND, &H30292, APPCOMMAND_VOLUME_UP * &H10000)
     End Sub
 
     'Funcion para bajar el volumen del equipo, no necesita parametros y no posee
     'valor de retorno
     Public Shared Sub VolumeDown()
-        SendMessage(WM_APPCOMMAND, &H30292, APPCOMMAND_VOLUME_DOWN * &H10000)
+        SendMessage(Application.OpenForms(0).Handle, WM_APPCOMMAND, &H30292, APPCOMMAND_VOLUME_DOWN * &H10000)
     End Sub
 
     'Funcion para silenciar el equipo, no necesita parametros y no posee
     'valor de retorno
     Public Shared Sub Mute()
-        SendMessage(WM_APPCOMMAND, &H200EB0, APPCOMMAND_VOLUME_MUTE * &H10000)
+        SendMessage(Application.OpenForms(0).Handle, WM_APPCOMMAND, &H200EB0, APPCOMMAND_VOLUME_MUTE * &H10000)
     End Sub
     'Funcion para apagar el equipo, no necesita parametros y no posee
     'valor de retorno
