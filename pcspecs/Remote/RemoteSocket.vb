@@ -16,7 +16,7 @@ Public Class RemoteSocket
 
     Public Sub New()
         'GetIP() for testing only on local host
-        ServerIpAddress = IPAddress.Parse("127.0.0.1")
+        ServerIpAddress = IPAddress.Parse("192.168.100.1")
     End Sub
 
     Public Sub SetRemoteForm(RemoteForm As RemoteForm)
@@ -26,7 +26,7 @@ Public Class RemoteSocket
     Public Sub StartServer()
         Try
             Control.CheckForIllegalCrossThreadCalls = False
-            Server = New TcpListener(ServerIpAddress, PORT)
+            Server = New TcpListener(IPAddress.Any, PORT)
             Server.Start()
             ServerRunning = True
             ClientReceiver = New Thread(AddressOf WaitForConnection)
