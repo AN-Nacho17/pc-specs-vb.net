@@ -2,6 +2,7 @@
 ' peticiones que se realizan. Su finalidad es controlar
 Imports System.Runtime.InteropServices
 
+
 Public Class SystemControlModule
 
     'Variables de clase que representan los comandos a enviar hacia la api de windows
