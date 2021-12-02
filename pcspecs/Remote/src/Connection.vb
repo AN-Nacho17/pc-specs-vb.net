@@ -27,7 +27,7 @@ Public Class Connection
     End Sub
 
     Public Function Read() As String
-        Return Reader.ReadToEnd()
+        Return Reader.ReadLine()
     End Function
 
     Public Function ReadRequest() As String

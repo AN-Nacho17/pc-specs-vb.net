@@ -29,7 +29,7 @@ Partial Class RemoteForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lb_ipServer = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.txt_output = New System.Windows.Forms.TextBox()
+        Me.txt_output = New System.Windows.Forms.RichTextBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -113,14 +113,14 @@ Partial Class RemoteForm
         '
         'txt_output
         '
-        Me.txt_output.BackColor = System.Drawing.Color.LightSlateGray
-        Me.txt_output.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.txt_output.ForeColor = System.Drawing.SystemColors.InactiveBorder
-        Me.txt_output.Location = New System.Drawing.Point(37, 471)
-        Me.txt_output.Multiline = True
+        Me.txt_output.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.txt_output.Font = New System.Drawing.Font("JetBrains Mono", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.txt_output.ForeColor = System.Drawing.SystemColors.InactiveCaptionText
+        Me.txt_output.Location = New System.Drawing.Point(48, 474)
         Me.txt_output.Name = "txt_output"
-        Me.txt_output.Size = New System.Drawing.Size(971, 221)
+        Me.txt_output.Size = New System.Drawing.Size(944, 252)
         Me.txt_output.TabIndex = 6
+        Me.txt_output.Text = ""
         '
         'RemoteForm
         '
@@ -142,7 +142,6 @@ Partial Class RemoteForm
         Me.Text = "Remote App"
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -153,5 +152,5 @@ Partial Class RemoteForm
     Friend WithEvents Label3 As Label
     Friend WithEvents lb_ipServer As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents txt_output As TextBox
+    Friend WithEvents txt_output As RichTextBox
 End Class

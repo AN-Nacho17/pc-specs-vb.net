@@ -15,8 +15,8 @@ Public Class RemoteSocket
     Private ClientReceiver As Thread
 
     Public Sub New()
-        'GetIP() for testing only on local host
-        ServerIpAddress = IPAddress.Parse("192.168.100.1")
+        'GetIP() 'For testing only On local host
+        ServerIpAddress = IPAddress.Parse("127.0.0.1")
     End Sub
 
     Public Sub SetRemoteForm(RemoteForm As RemoteForm)

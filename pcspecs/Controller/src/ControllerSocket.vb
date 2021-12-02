@@ -37,8 +37,8 @@ Public Class ControllerSocket
         Writer.Flush()
     End Sub
 
-    Public Sub WriteLine(Request As String)
-        Writer.WriteLine(Request)
+    Public Sub WriteLine(Message As String)
+        Writer.WriteLine(Message)
         Writer.Flush()
     End Sub
 
