@@ -94,7 +94,7 @@ Public Class SystemInfoModule
     'Funcion para regresar la cadena que contiene el nombre de usuario que inicio sesion 
     'no recibe parametros
     Public Shared Function getUserName() As String
-        Return My.User.Name
+        Return System.Environment.UserName
     End Function
 
     'Funcion para regresar la zona horaria del sistema en formato cadena, no recibe
