@@ -66,6 +66,7 @@ Public Class ControllerSocket
         Client.Close()
     End Sub
 
+    'Metodo que retorna un boolean en caso de que el cliente este conectado(true) o no (false)
     Public Function IsConnected() As Boolean
         IsConnected = Client.Connected
     End Function

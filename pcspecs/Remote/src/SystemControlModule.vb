@@ -50,38 +50,24 @@ Public Class SystemControlModule
     'Funcion para apagar el equipo, no necesita parametros y no posee
     'valor de retorno
     Public Shared Sub Shutdown()
-        shellCall("shutdown /s")
+        Dim ApagarComp As Process = New Process
+        'Ejecutamos el proceso de apagado
+        ApagarComp.Start("shutdown.exe", "/s")
     End Sub
 
     'Funcion para reiniciar el equipo, no necesita parametros y no posee
     'valor de retorno
     Public Shared Sub ReStart()
-        shellCall("shutdown /r")
+        Dim restart As Process = New Process
+        'Ejecutamos el proceso de apagado
+        restart.Start("shutdown.exe", "/r")
     End Sub
     'Funcion para cerrar la sesion de Windows del equipo el equipo, no necesita parametros y no posee
     'valor de retorno
     Public Shared Sub CloseUserSession()
-        shellCall("shutdown /l")
-    End Sub
-
-    'Metodo para llamar a una funcion shell para iniciar un proceso de una
-    'instancia de cmd y luego enviarle el comando DOS a ejecutar
-    Private Shared Sub shellCall(shellCommand As String)
-        'La tarea devuelve un PID del proceso iniciado
-        Dim processFinished = 0
-        Dim pid As Integer
-        Dim process As Process
-        pid = Shell("cmd.exe", 1)
-        SendKeys.Send(shellCommand)
-        SendKeys.Send("{Enter}")
-        'Try
-        'If (pid = processFinished) = False Then
-        'process = Process.GetProcessById(pid)
-        'process.Kill()
-        ' MsgBox("Procces with PID: " & pid & " terminated")
-        '  End If
-        'Catch ex As Exception
-        'End Try
+        Dim closeSes As Process = New Process
+        'Ejecutamos el proceso de apagado
+        closeSes.Start("shutdown.exe", "/l")
     End Sub
 
 
