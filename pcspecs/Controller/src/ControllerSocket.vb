@@ -25,27 +25,30 @@ Public Class ControllerSocket
         End Try
     End Sub
 
-    'Esta sub recibe la opcion que debera ser enviada al servidor y la escribira como un string
-    'para luego ser casteada a byte de opcion.
+    'Este metodo sub recibe la opcion que debera ser enviada al servidor y la escribira como un string
     Public Sub Request(Request As String)
         Writer.WriteLine(Request)
         Writer.Flush()
     End Sub
 
+    'Este metodo sub recibe la opcion que debera ser enviada al servidor y la escribira como un string
     Public Sub Write(Message As String)
         Writer.Write(Message)
         Writer.Flush()
     End Sub
 
+    'Este metodo sub recibe la opcion que debera ser enviada al servidor y la escribira como un string
     Public Sub WriteLine(Message As String)
         Writer.WriteLine(Message)
         Writer.Flush()
     End Sub
 
+    'Este metodo sub recibe la opcion que debera ser enviada al servidor y la escribira como un string
     Public Function Read() As String
         Return Reader.ReadLine()
     End Function
 
+    'Este metodo sub recibe la opcion que debera ser enviada al servidor y la escribira como un string
     Public Function BigRead() As String
         Dim Read As String = ""
         Dim SubRead As String()
@@ -56,6 +59,7 @@ Public Class ControllerSocket
         BigRead = Read
     End Function
 
+    'Este metodo que cierra los canales de comunicacion del cliente junto con el socket de conexion
     Public Sub DissconnectClient()
         Writer.Close()
         Reader.Close()
