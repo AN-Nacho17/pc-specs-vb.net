@@ -14,7 +14,7 @@ Public Class SystemControlModule
     'Declaraciones necesarias para la interacion con el api de windows para llamadas como
     'el control de sonidos.
     <DllImport("user32.dll", SetLastError:=True, CharSet:=CharSet.Auto)>
-    Private Shared Function SendMessage(Msg As UInteger, wParam As IntPtr, lParam As IntPtr) As IntPtr
+    Public Shared Function SendMessage(Msg As UInteger, wParam As IntPtr, lParam As IntPtr) As IntPtr
     End Function
 
     'Funcion para realizar una captura de pantalla, su valor de retorno es un
@@ -35,6 +35,7 @@ Public Class SystemControlModule
     Public Shared Sub VolumeUp()
         SendMessage(WM_APPCOMMAND, &H30292, APPCOMMAND_VOLUME_UP * &H10000)
     End Sub
+
     'Funcion para bajar el volumen del equipo, no necesita parametros y no posee
     'valor de retorno
     Public Shared Sub VolumeDown()

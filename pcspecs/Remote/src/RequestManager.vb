@@ -7,8 +7,6 @@ Public Class RequestManager
     Private ResponseThread As Thread
     Private Listen = True
     Private RemoteForm As RemoteForm
-    Private UserInput As String
-    Private InputChecker As Threading.Thread
 
     'Server possible requests to response
     Private Const SO_COMPLETE_NAME As String = "1"
